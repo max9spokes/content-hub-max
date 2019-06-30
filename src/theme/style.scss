@@ -1,0 +1,14 @@
+@import "node_modules/bootstrap/scss/functions";
+
+@import "./variables";
+@import "node_modules/bootstrap/scss/variables";
+$theme-colors: map-merge(
+  (
+    "dark-font": $dark-font,
+  ),
+  $theme-colors
+);
+
+@import "node_modules/bootstrap/scss/mixins";
+
+@import "node_modules/bootstrap/scss/bootstrap";
