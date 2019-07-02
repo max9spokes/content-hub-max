@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^13.2.0",
+    "@contentful/rich-text-types": "^13.1.0",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "bootstrap": "^4.3.1",

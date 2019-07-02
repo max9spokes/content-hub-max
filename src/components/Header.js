@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import css from "@emotion/css"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { Collapse } from "reactstrap"
 
 const Navlink = ({ link }) => {
   const btnDefaults = css`
@@ -19,6 +20,10 @@ const Navlink = ({ link }) => {
               color: ${link.style !== "Primary-CTA"
                 ? "var(--dark-font)"
                 : null};
+              @media (max-width: 766px) {
+                padding-top: 0.35rem;
+                padding-bottom: 0.35rem;
+              }
             `,
             link.style !== "Link" ? btnDefaults : "default",
           ]}
@@ -36,6 +41,10 @@ const Navlink = ({ link }) => {
           href={link.url}
           css={css`
             color: ${link.style !== "Primary-CTA" ? "var(--dark-font)" : null};
+            @media (max-width: 766px) {
+              padding-top: 0.35rem;
+              padding-bottom: 0.35rem;
+            }
           `}
           target="_blank"
           className={`${
@@ -52,6 +61,7 @@ const Navlink = ({ link }) => {
 }
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const {
     c: {
       channel: [{ channelName, channelLogo }],
@@ -80,45 +90,104 @@ export default function Header() {
   `)
 
   return (
-    <nav
-      css={css`
-        border-bottom: 2px solid #fba919;
-      `}
-    >
-      <div className="container">
-        <div className="d-flex d-flex align-items-center justify-content-between">
-          <div className="logo">
-            <img
-              src={channelLogo.file.url}
+    <>
+      <nav
+        css={css`
+          border-bottom: 2px solid #fba919;
+        `}
+      >
+        <div className="container">
+          <div className="d-flex d-flex align-items-center justify-content-between">
+            <Link
               css={css`
-                position: relative;
-                left: -15px;
+                display: block;
+                &:hover {
+                  text-decoration: none;
+                }
               `}
-              alt=""
-            />
-            <span
-              className="bold"
-              css={css`
-                color: var(--dark-font);
-              `}
+              className="logo"
             >
-              {channelName}
-            </span>
-          </div>
-          <div className="navlinks d-flex align-items-center">
-            {navigation.slice(0, navigation.length - 2).map((link, i) => {
-              return <Navlink key={link.url} link={link} />
-            })}
-          </div>
-          <div className="buttons d-flex align-items-center">
-            {navigation
-              .slice(navigation.length - 2, navigation.length)
-              .map((link, i) => {
+              <img
+                src={channelLogo.file.url}
+                css={css`
+                  position: relative;
+                  left: -15px;
+                `}
+                alt=""
+              />
+              <span
+                className="bold"
+                css={css`
+                  color: var(--dark-font);
+                `}
+              >
+                {channelName}
+              </span>
+            </Link>
+            <div className="navlinks d-none d-md-flex align-items-center">
+              {navigation.slice(0, navigation.length - 2).map((link, i) => {
                 return <Navlink key={link.url} link={link} />
               })}
+            </div>
+            <div className="buttons   d-none d-md-flex  align-items-center">
+              {navigation
+                .slice(navigation.length - 2, navigation.length)
+                .map((link, i) => {
+                  return <Navlink key={link.url} link={link} />
+                })}
+            </div>
+            <MenuBar
+              className={"d-block d-md-none"}
+              onClick={e => {
+                setIsMenuOpen(i => !i)
+              }}
+              css={css`
+                cursor: pointer;
+              `}
+            />
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Collapse
+        css={css`
+          border-bottom: 1px solid var(--secondary);
+        `}
+        className="d-md-none"
+        isOpen={isMenuOpen}
+      >
+        {" "}
+        <div className="navlinks d-flex py-2 flex-column">
+          {navigation.slice(0, navigation.length - 2).map((link, i) => {
+            return <Navlink key={link.url} link={link} />
+          })}
+        </div>
+      </Collapse>
+      {typeof window !== "undefined" && window.location.pathname === "/" && (
+        <div className="buttons w-100  d-flex d-md-none py-3  justify-content-center">
+          {navigation
+            .slice(navigation.length - 2, navigation.length)
+            .map((link, i) => {
+              return <Navlink key={link.url} link={link} />
+            })}
+        </div>
+      )}
+    </>
+  )
+}
+
+function MenuBar(props) {
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 24 24"
+      width={30}
+      height={30}
+      style={{ fill: "#032e66" }}
+    >
+      <path
+        d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+        overflow="visible"
+      />
+    </svg>
   )
 }

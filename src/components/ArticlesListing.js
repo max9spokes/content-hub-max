@@ -112,10 +112,9 @@ export default function ArticlesListing() {
             shortDescription
           }
           mediaThumb {
-            title
+            description
             fluid(maxWidth: 400) {
-              tracedSVG
-
+              base64
               aspectRatio
               src
               srcSet
@@ -187,6 +186,7 @@ export default function ArticlesListing() {
                   css={css`
                     margin-bottom: 1.25rem;
                   `}
+                  alt={article.mediaThumb.description}
                   fluid={article.mediaThumb.fluid}
                 />
               )}

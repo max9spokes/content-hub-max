@@ -12,15 +12,24 @@ export class SingleImage extends React.Component {
         className="sticky-top"
         css={css`
           top: 0rem;
+
           border-right: 1px solid #ebebeb;
         `}
       >
         {" "}
         <GatsbyImage
+          style={{ position: null }}
           css={css`
-            margin-left: calc((100vh -150%) / -2);
+            width: 100%;
+            @media (min-width: 767px) {
+              height: 100vh;
+              position: relative;
+              width: calc(100% + (100vw - 100%) / 2);
+              left: calc((100vw - 100%) / -2);
+            }
           `}
-          fluid={this.props.fluid}
+          alt={this.props.mediaThumb.description}
+          fluid={this.props.mediaThumb.fluid}
         />
       </div>
     )

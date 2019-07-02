@@ -20,10 +20,10 @@ export default function FeaturedArticle() {
             shortDescription
           }
           mediaThumb {
-            title
+            description
             fluid(maxWidth: 1000) {
-              # base64
-              tracedSVG
+              base64
+              # tracedSVG
               aspectRatio
               src
               srcSet
@@ -44,17 +44,20 @@ export default function FeaturedArticle() {
       `}
     >
       {" "}
-      <GatsbyImage
-        css={css`
-          width: 100%;
-          @media (min-width: 992px) {
-            position: relative;
-            width: calc(100% + (100vw - 100%) / 2);
-            left: calc((100vw - 100%) / -2);
-          }
-        `}
-        fluid={article.mediaThumb.fluid}
-      />
+      {article.mediaThumb && (
+        <GatsbyImage
+          css={css`
+            width: 100%;
+            @media (min-width: 992px) {
+              position: relative;
+              width: calc(100% + (100vw - 100%) / 2);
+              left: calc((100vw - 100%) / -2);
+            }
+          `}
+          alt={article.mediaThumb.description}
+          fluid={article.mediaThumb.fluid}
+        />
+      )}
       <h2
         css={css`
           color: var(--dark-font);
