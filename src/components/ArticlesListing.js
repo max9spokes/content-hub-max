@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react"
 import css from "@emotion/css"
 import styled from "@emotion/styled"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
@@ -46,6 +48,7 @@ const PaginationLink = css`
   line-height: 23px;
   color: var(--secondary);
   margin: 0 0.75rem;
+  cursor: pointer;
   &.active {
     color: var(--primary);
   }
@@ -82,7 +85,6 @@ const Dropdown = ({ children, open, setOpen }) => {
         opacity: ${open ? 1 : 0};
         height: ${open ? "1000px" : 0};
         max-height: max-content;
-
         transition: all 300ms ease-in-out;
       `}
     >
@@ -94,14 +96,18 @@ const Dropdown = ({ children, open, setOpen }) => {
 export default function ArticlesListing() {
   const [active, setActive] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [page, setPage] = useState(0)
 
   const {
-    c: { filterOptions, listArticles, articlesPerPage },
+    c: { filterOptions, listArticles, articlesPerPage, body },
   } = useStaticQuery(graphql`
     {
       c: contentfulContentMainScreen {
         filterOptions
         articlesPerPage
+        body {
+          json
+        }
         listArticles {
           slug
           title
@@ -138,7 +144,7 @@ export default function ArticlesListing() {
   const BARITEMS = ITEMS.slice(0, indexOfLabel)
   const DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
   const DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
-
+  // const temp = [...listArticles, ...listArticles, ...listArticles]
   const ARTICLES = listArticles
     .filter(item => {
       if (filterOptions[0] == selectedFilter) {
@@ -308,7 +314,7 @@ export default function ArticlesListing() {
                     setDropdownOpen(false)
                     setSelectedFilter(item.item)
                   }}
-                  key={item}
+                  key={item.index}
                 >
                   {item.item}
                 </Item>
@@ -320,26 +326,44 @@ export default function ArticlesListing() {
       <div id="listing">
         <div
           css={css`
-            font-weight: 300;
             margin: 1.25rem 0;
-            color: var(--secondary);
-            line-height: 19px;
-            text-transform: uppercase;
+            h2 {
+              font-weight: 300;
+              color: var(--secondary);
+              line-height: 19px;
+              font-size: 16px;
+              text-transform: uppercase;
+            }
           `}
         >
-          Latest Insights
+          {documentToReactComponents(body.json)}
         </div>
         <div id="list">
           <div>
-            <Masonry gap={20} items={ARTICLES} minColumnWidth={180} />
-            {}
+            <Masonry
+              gap={20}
+              items={ARTICLES.slice(page, page + articlesPerPage)}
+              minColumnWidth={180}
+            />
           </div>
         </div>
+
         <div id="pagination" className="d-flex justify-content-center mb-3">
-          <span css={PaginationLink}>1</span>
-          <span css={PaginationLink} className="active">
-            2
-          </span>
+          {ARTICLES.map((article, index) => {
+            // return only for every "articlesPerPage"
+            return index % articlesPerPage === 0 ? (
+              <span
+                index={index}
+                className={`${index === page && "active"}`}
+                css={PaginationLink}
+                onClick={e => {
+                  setPage(index)
+                }}
+              >
+                {index / articlesPerPage + 1}
+              </span>
+            ) : null
+          })}
         </div>
       </div>
     </div>
