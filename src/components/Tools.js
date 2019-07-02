@@ -1,7 +1,36 @@
 import React from "react"
 import css from "@emotion/css"
+import { useStaticQuery, graphql } from "gatsby"
 
 export default function Tools() {
+  const {
+    c: { tools },
+  } = useStaticQuery(graphql`
+    {
+      c: contentfulContentMainScreen {
+        tools: toolsTemplates {
+          title
+          shortDescription {
+            shortDescription
+          }
+          slug
+
+          mediaThumb {
+            title
+            fluid {
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
+      }
+    }
+  `)
   return (
     <div className="bg-light">
       <div

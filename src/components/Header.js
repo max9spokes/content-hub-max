@@ -1,13 +1,84 @@
 import React from "react"
 import css from "@emotion/css"
-import { Link } from "gatsby"
-export default function Header() {
+import { Link, useStaticQuery, graphql } from "gatsby"
+
+const Navlink = ({ link }) => {
   const btnDefaults = css`
     font-size: 14px;
     line-height: 17px;
     font-weight: 600;
     padding: 0.5em 2.5em;
   `
+  return (
+    <>
+      {!link.openNewTab && (
+        <Link
+          to={link.url}
+          css={[
+            css`
+              color: ${link.style !== "Primary-CTA"
+                ? "var(--dark-font)"
+                : null};
+            `,
+            link.style !== "Link" ? btnDefaults : "default",
+          ]}
+          className={`${
+            link.style === "Primary-CTA" ? "btn btn-primary " : ""
+          } ${
+            link.style === "Secondary-CTA" ? "btn btn-outline-primary" : ""
+          } semibold mx-3`}
+        >
+          {link.title}
+        </Link>
+      )}
+      {link.openNewTab && (
+        <a
+          href={link.url}
+          css={css`
+            color: ${link.style !== "Primary-CTA" ? "var(--dark-font)" : null};
+          `}
+          target="_blank"
+          className={`${
+            link.style === "Primary-CTA" ? "btn btn-primary" : null
+          } ${
+            link.style === "Secondary-CTA" ? "btn btn-outline-primary" : null
+          } semibold mx-3`}
+        >
+          {link.title}
+        </a>
+      )}
+    </>
+  )
+}
+
+export default function Header() {
+  const {
+    c: {
+      channel: [{ channelName, channelLogo }],
+      navigation,
+    },
+  } = useStaticQuery(graphql`
+    {
+      c: contentfulContentMainScreen {
+        channel {
+          channelName
+          channelLogo {
+            title
+            file {
+              url
+            }
+          }
+        }
+        navigation {
+          title
+          url
+          style
+          openNewTab
+        }
+      }
+    }
+  `)
+
   return (
     <nav
       css={css`
@@ -18,7 +89,7 @@ export default function Header() {
         <div className="d-flex d-flex align-items-center justify-content-between">
           <div className="logo">
             <img
-              src="https://images.ctfassets.net/rhffukznzwn4/6v9z0Z0iSyL6t59NWMCPIM/a69ac385c8ddd0fbf78b2bb7f758eba0/bnz-logo.svg"
+              src={channelLogo.file.url}
               css={css`
                 position: relative;
                 left: -15px;
@@ -31,37 +102,20 @@ export default function Header() {
                 color: var(--dark-font);
               `}
             >
-              My Business Live
+              {channelName}
             </span>
           </div>
           <div className="navlinks d-flex align-items-center">
-            <Link
-              to={"/"}
-              css={css`
-                color: var(--dark-font);
-              `}
-              className="bold mx-3"
-            >
-              Insights
-            </Link>
-            <Link to={"/"} className=" semibold mx-3">
-              Dashboard
-            </Link>
-            <Link to={"/"} className=" semibold mx-3">
-              Marketplace
-            </Link>
+            {navigation.slice(0, navigation.length - 2).map((link, i) => {
+              return <Navlink key={link.url} link={link} />
+            })}
           </div>
           <div className="buttons d-flex align-items-center">
-            <Link to={"/"} css={btnDefaults} className="btn btn-primary mx-3">
-              Sign up
-            </Link>
-            <Link
-              to={"/"}
-              css={btnDefaults}
-              className="btn  btn-outline-primary semibold mx-3"
-            >
-              Login
-            </Link>
+            {navigation
+              .slice(navigation.length - 2, navigation.length)
+              .map((link, i) => {
+                return <Navlink key={link.url} link={link} />
+              })}
           </div>
         </div>
       </div>

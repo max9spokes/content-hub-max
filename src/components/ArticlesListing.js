@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useRef } from "react"
 import css from "@emotion/css"
-import { Collapse } from "reactstrap"
+import styled from "@emotion/styled"
+import { Masonry } from "react-masonry-responsive"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import GatsbyImage from "gatsby-image"
+
+const Card = styled(Link)`
+  display: block;
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover h3 {
+    text-decoration: underline;
+  }
+`
 
 const Item = ({ children, active, block, onClick }) => {
   return (
@@ -27,6 +40,16 @@ const Item = ({ children, active, block, onClick }) => {
     </span>
   )
 }
+const PaginationLink = css`
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  color: var(--secondary);
+  margin: 0 0.75rem;
+  &.active {
+    color: var(--primary);
+  }
+`
 
 const Dropdown = ({ children, open, setOpen }) => {
   const dropRef = useRef(null)
@@ -72,21 +95,141 @@ export default function ArticlesListing() {
   const [active, setActive] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const ITEMS = [
-    "News",
-    "Starting up new",
-    "Growing existing",
-    "Financial education ",
-    "Articles",
-    "Business Tips",
-    "Case Study",
-    "Checklist",
-  ].map((item, index) => {
+  const {
+    c: { filterOptions, listArticles, articlesPerPage },
+  } = useStaticQuery(graphql`
+    {
+      c: contentfulContentMainScreen {
+        filterOptions
+        articlesPerPage
+        listArticles {
+          slug
+          title
+          category
+          topic
+          shortDescription {
+            id
+            shortDescription
+          }
+          mediaThumb {
+            title
+            fluid(maxWidth: 400) {
+              tracedSVG
+
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
+      }
+    }
+  `)
+  const [selectedFilter, setSelectedFilter] = useState(filterOptions[0])
+  const ITEMS = filterOptions.map((item, index) => {
     return {
       item,
       index,
     }
   })
+  const indexOfLabel = ITEMS.findIndex(value => /\[.+\]/.test(value.item))
+  const BARITEMS = ITEMS.slice(0, indexOfLabel)
+  const DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
+  const DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
+
+  const ARTICLES = listArticles
+    .filter(item => {
+      if (filterOptions[0] == selectedFilter) {
+        return true
+      }
+      if (
+        (filterOptions[0] !== selectedFilter &&
+          item.category &&
+          item.category == selectedFilter) ||
+        (item.topic && item.topic.includes(selectedFilter))
+      ) {
+        return true
+      } else {
+        return false
+      }
+    })
+    .map(article => {
+      var shortDescription
+
+      if (article.shortDescription.shortDescription.length < 200) {
+        shortDescription = article.shortDescription.shortDescription
+      } else {
+        var words = article.shortDescription.shortDescription.split(" ")
+        var final = words.reduce(
+          (acc, cur) => {
+            return {
+              text:
+                acc.textLength + cur.length > 200
+                  ? acc.text
+                  : acc.text + " " + cur,
+              textLength: acc.textLength + cur.length,
+            }
+          },
+          { text: "", textLength: 0 }
+        )
+        shortDescription = final.text + " ..."
+      }
+      return {
+        key: article.slug,
+        node: (
+          <Card to={article.slug} className="mb-3">
+            <div>
+              {article.mediaThumb && (
+                <GatsbyImage
+                  css={css`
+                    margin-bottom: 1.25rem;
+                  `}
+                  fluid={article.mediaThumb.fluid}
+                />
+              )}
+              <div
+                css={css`
+                  color: var(--dark-font);
+                  font-size: 12px;
+                  font-weight: 600;
+                  line-height: 15px;
+                  text-transform: uppercase;
+                `}
+              >
+                {article.category}
+              </div>
+              <h3
+                css={css`
+                  font-size: 18px;
+                  font-weight: bold;
+                  line-height: 23px;
+                  margin-top: 0.5rem;
+                  text-transform: uppercase;
+                  color: var(--secondary);
+                `}
+              >
+                {article.title}
+              </h3>
+              <p
+                css={css`
+                  font-size: 12px;
+                  line-height: 15px;
+
+                  margin-top: 0.5rem;
+                  color: var(--secondary);
+                `}
+              >
+                {shortDescription}
+              </p>
+            </div>
+          </Card>
+        ),
+      }
+    })
+
   return (
     <div>
       <div
@@ -100,16 +243,19 @@ export default function ArticlesListing() {
           padding-top: 0.5rem;
           margin-top: -0.5rem;
           justify-content: space-between;
+          box-shadow: 0px 1rem 0px rgba(255, 255, 255, 1);
         `}
       >
         <div>
-          {ITEMS.filter(item => item.index < 4).map(item => {
+          {BARITEMS.map(item => {
             return (
               <Item
                 active={item.index === active}
                 onClick={e => {
                   setActive(item.index)
                   setDropdownOpen(false)
+
+                  setSelectedFilter(item.item)
                 }}
                 key={item.index}
               >
@@ -135,7 +281,7 @@ export default function ArticlesListing() {
                 margin-right: 0.25rem;
               `}
             >
-              More
+              {DROPDOWNMENULABEL.slice(1, DROPDOWNMENULABEL.length - 1)}
             </span>
             <span
               className="triangle"
@@ -152,7 +298,7 @@ export default function ArticlesListing() {
             />
           </div>
           <Dropdown setOpen={setDropdownOpen} open={dropdownOpen}>
-            {ITEMS.filter(item => item.index > 3).map(item => {
+            {DROPDOWNITEMS.map(item => {
               return (
                 <Item
                   block
@@ -160,8 +306,9 @@ export default function ArticlesListing() {
                   onClick={e => {
                     setActive(item.index)
                     setDropdownOpen(false)
+                    setSelectedFilter(item.item)
                   }}
-                  key={item.index}
+                  key={item}
                 >
                   {item.item}
                 </Item>
@@ -174,7 +321,7 @@ export default function ArticlesListing() {
         <div
           css={css`
             font-weight: 300;
-            margin-top: 1.25rem;
+            margin: 1.25rem 0;
             color: var(--secondary);
             line-height: 19px;
             text-transform: uppercase;
@@ -183,18 +330,16 @@ export default function ArticlesListing() {
           Latest Insights
         </div>
         <div id="list">
-          {Array(10)
-            .fill({ length: 20 })
-            .map(() => {
-              return (
-                <div className="py-3">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Placeat sapiente tempora eius impedit dignissimos
-                  necessitatibus? Ut sint voluptatibus quos eos, natus ipsa modi
-                  soluta ex hic veritatis suscipit itaque officiis.
-                </div>
-              )
-            })}
+          <div>
+            <Masonry gap={20} items={ARTICLES} minColumnWidth={180} />
+            {}
+          </div>
+        </div>
+        <div id="pagination" className="d-flex justify-content-center mb-3">
+          <span css={PaginationLink}>1</span>
+          <span css={PaginationLink} className="active">
+            2
+          </span>
         </div>
       </div>
     </div>
