@@ -50,27 +50,42 @@ export default function SingleContent({ data: { tool } }) {
             </div>
           </div>
           <div className="col col-12 col-md-6">
-            <ReactIframeResizer
-              iframeResizerOptions={{ checkOrigin: false }}
-              ref={iframeRef}
-              title="tool"
-              style={{ height: null }}
-              css={css`
-                border: none;
-                width: 100%;
-                height: ${resizeIframe(iframeRef)};
-              `}
-              src={
-                process.env.NODE_ENV === "production"
-                  ? tool && tool.tool && tool.tool.localZipFolder
-                  : null
-              }
-              content={
-                process.env.NODE_ENV === "development"
-                  ? tool.tool.localZipHtmlSrc
-                  : null
-              }
-            />
+            {tool && tool.tool && !tool.tool.localZipFolder && (
+              <ReactIframeResizer
+                iframeResizerOptions={{ checkOrigin: false }}
+                ref={iframeRef}
+                title="tool"
+                style={{ height: null }}
+                css={css`
+                  border: none;
+                  width: 100%;
+                  height: ${resizeIframe(iframeRef)};
+                `}
+                src={
+                  process.env.NODE_ENV === "production"
+                    ? tool.tool.localZipFolder
+                    : null
+                }
+                content={
+                  process.env.NODE_ENV === "development"
+                    ? tool.tool.localZipHtmlSrc
+                    : null
+                }
+              />
+            )}
+            {tool && tool.tool && tool.tool.localZipFolder && (
+              <div>
+                <a href={tool.tool.file.url}>
+                  {" "}
+                  <img
+                    src={tool.mediaThumb.file.url}
+                    alt=""
+                    className="my-4 mx-auto d-block"
+                  />
+                  <div className="text-center">Download</div>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
