@@ -50,7 +50,7 @@ export default function SingleContent({ data: { tool } }) {
             </div>
           </div>
           <div className="col col-12 col-md-6">
-            {tool && tool.tool && !tool.tool.localZipFolder && (
+            {tool && tool.tool && tool.tool.localZipFolder && (
               <ReactIframeResizer
                 iframeResizerOptions={{ checkOrigin: false }}
                 ref={iframeRef}
@@ -73,7 +73,7 @@ export default function SingleContent({ data: { tool } }) {
                 }
               />
             )}
-            {tool && tool.tool && tool.tool.localZipFolder && (
+            {tool && tool.tool && !tool.tool.localZipFolder && (
               <div>
                 <a href={tool.tool.file.url}>
                   {" "}

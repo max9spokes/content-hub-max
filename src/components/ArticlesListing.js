@@ -187,9 +187,6 @@ export default function ArticlesListing() {
         key: `${article.slug}${Math.floor(Math.random() * 100).toString()}`,
         node: (
           <Card to={article.slug} className="mb-3">
-            {console.log(
-              article.mediaThumb && article.mediaThumb.fluid.aspectRatio
-            )}
             {article.mediaThumb && (
               <GatsbyImage
                 imgStyle={{ transition: null }}
