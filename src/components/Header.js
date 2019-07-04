@@ -156,10 +156,12 @@ export default function Header() {
         isOpen={isMenuOpen}
       >
         {" "}
-        <div className="navlinks d-flex py-2 flex-column">
-          {navigation.slice(0, navigation.length - 2).map((link, i) => {
-            return <Navlink key={link.url} link={link} />
-          })}
+        <div className="container">
+          <div className="navlinks d-flex py-2 flex-column">
+            {navigation.slice(0, navigation.length - 2).map((link, i) => {
+              return <Navlink key={link.url} link={link} />
+            })}
+          </div>
         </div>
       </Collapse>
       {typeof window !== "undefined" && window.location.pathname === "/" && (

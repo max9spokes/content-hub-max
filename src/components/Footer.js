@@ -46,7 +46,7 @@ export default function Footer() {
           <div className="col col-12 col-md-7">
             <div className="d-flex flex-wrap justify-content-center d-md-block">
               {termsLink.map((item, i) => {
-                return <FooterLink link={item} />
+                return <FooterLink key={i} link={item} />
               })}
             </div>
             <p

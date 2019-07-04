@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react"
 import css from "@emotion/css"
 import styled from "@emotion/styled"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
@@ -96,8 +95,8 @@ const Dropdown = ({ children, open, setOpen }) => {
 export default function ArticlesListing() {
   const [active, setActive] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [page, setPage] = useState(0)
-
+  const [currentPaginationPage, setCurrentPaginationPage] = useState(0)
+  const scrollToRef = useRef(null)
   const {
     c: { filterOptions, listArticles, articlesPerPage, body },
   } = useStaticQuery(graphql`
@@ -144,8 +143,9 @@ export default function ArticlesListing() {
   const BARITEMS = ITEMS.slice(0, indexOfLabel)
   const DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
   const DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
-  // const temp = [...listArticles, ...listArticles, ...listArticles]
-  const ARTICLES = listArticles
+  const temp = [...listArticles, ...listArticles, ...listArticles]
+  // const ARTICLES = listArticles
+  const ARTICLES = temp
     .filter(item => {
       if (filterOptions[0] == selectedFilter) {
         return true
@@ -183,54 +183,53 @@ export default function ArticlesListing() {
         shortDescription = final.text + " ..."
       }
       return {
-        key: article.slug,
+        key: `${article.slug}${Math.floor(Math.random() * 100).toString()}`,
         node: (
           <Card to={article.slug} className="mb-3">
-            <div>
-              {article.mediaThumb && (
-                <GatsbyImage
-                  css={css`
-                    margin-bottom: 1.25rem;
-                  `}
-                  alt={article.mediaThumb.description}
-                  fluid={article.mediaThumb.fluid}
-                />
-              )}
-              <div
+            {article.mediaThumb && (
+              <GatsbyImage
                 css={css`
-                  color: var(--dark-font);
-                  font-size: 12px;
-                  font-weight: 600;
-                  line-height: 15px;
-                  text-transform: uppercase;
+                  margin-bottom: 1.25rem;
+                  margin-right: 1rem;
                 `}
-              >
-                {article.category}
-              </div>
-              <h3
-                css={css`
-                  font-size: 18px;
-                  font-weight: bold;
-                  line-height: 23px;
-                  margin-top: 0.5rem;
-                  text-transform: uppercase;
-                  color: var(--secondary);
-                `}
-              >
-                {article.title}
-              </h3>
-              <p
-                css={css`
-                  font-size: 12px;
-                  line-height: 15px;
-
-                  margin-top: 0.5rem;
-                  color: var(--secondary);
-                `}
-              >
-                {shortDescription}
-              </p>
+                alt={article.mediaThumb.description}
+                fluid={article.mediaThumb.fluid}
+              />
+            )}
+            <div
+              css={css`
+                color: var(--dark-font);
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 15px;
+                text-transform: uppercase;
+              `}
+            >
+              {article.category}
             </div>
+            <h3
+              css={css`
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 23px;
+                margin-top: 0.5rem;
+                text-transform: uppercase;
+                color: var(--secondary);
+              `}
+            >
+              {article.title}
+            </h3>
+            <p
+              css={css`
+                font-size: 12px;
+                line-height: 15px;
+
+                margin-top: 0.5rem;
+                color: var(--secondary);
+              `}
+            >
+              {shortDescription}
+            </p>
           </Card>
         ),
       }
@@ -323,7 +322,7 @@ export default function ArticlesListing() {
           </Dropdown>
         </div>
       </div>
-      <div id="listing">
+      <div id="listing" ref={scrollToRef}>
         <div
           css={css`
             margin: 1.25rem 0;
@@ -342,22 +341,37 @@ export default function ArticlesListing() {
           <div>
             <Masonry
               gap={20}
-              items={ARTICLES.slice(page, page + articlesPerPage)}
+              items={ARTICLES.slice(
+                currentPaginationPage,
+                currentPaginationPage + articlesPerPage
+              )}
               minColumnWidth={180}
             />
           </div>
         </div>
 
         <div id="pagination" className="d-flex justify-content-center mb-3">
+          {ARTICLES.length === 0 && <p>No content to display.</p>}
           {ARTICLES.map((article, index) => {
-            // return only for every "articlesPerPage"
             return index % articlesPerPage === 0 ? (
               <span
+                key={index}
                 index={index}
-                className={`${index === page && "active"}`}
+                className={`${index === currentPaginationPage && "active"}`}
                 css={PaginationLink}
                 onClick={e => {
-                  setPage(index)
+                  setCurrentPaginationPage(index)
+                  console.log(scrollToRef.current.getBoundingClientRect())
+
+                  typeof window !== "undefined" &&
+                    window.scrollTo({
+                      top:
+                        window.scrollY +
+                        scrollToRef.current.getBoundingClientRect().top -
+                        20,
+                      left: 0,
+                      behavior: "smooth",
+                    })
                 }}
               >
                 {index / articlesPerPage + 1}

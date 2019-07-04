@@ -1,6 +1,10 @@
 import React from "react"
 import css from "@emotion/css"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate, Link } from "gatsby"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import loadable from "@loadable/component"
+const Slider = loadable(() => import("react-slick"))
 
 export default function Tools() {
   const {
@@ -16,15 +20,9 @@ export default function Tools() {
           slug
 
           mediaThumb {
-            title
-            fluid {
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
+            description
+            file {
+              url
             }
           }
         }
@@ -52,45 +50,125 @@ export default function Tools() {
         >
           Tools and Templates
         </h2>
-        <div className="row">
-          <div className="col col-md-4">
-            {" "}
-            <div
-              className="card"
-              css={css`
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-                background-color: #ffffff;
-                border-radius: 0;
-                padding: 1rem 1rem 2rem 1rem;
-              `}
-            >
-              <h3
-                css={css`
-                  font-size: 17px;
-                  font-weight: 600;
-                  line-height: 20px;
-                  color: var(--primary);
-                `}
-              >
-                Business plan health check
-              </h3>
-              <div className="row">
-                <div className="col col-3">ICON</div>
+        <div
+          css={css`
+            .slick-track {
+              min-width: 100%;
+            }
+            .slick-dots {
+              position: relative;
+              li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                &.slick-active {
+                  button {
+                    background: var(--primary);
+                  }
+                }
+                button {
+                  background: #ddd;
+                  border-radius: 50%;
+                  @media (max-width: 576px) {
+                    width: 16px;
+                    height: 16px;
+                  }
+                  &::before {
+                    content: "";
+                  }
+                }
+              }
+            }
+          `}
+        >
+          <Slider
+            arrows={false}
+            dots={true}
+            infinite={tools.length > 3}
+            centerMode={false}
+            speed={500}
+            slidesToShow={3}
+            slidesToScroll={3}
+            responsive={[
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  initialSlide: 0,
+                },
+              },
+              {
+                breakpoint: 576,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 0,
+                },
+              },
+            ]}
+          >
+            {tools.map((tool, i) => {
+              return (
                 <div
-                  className="col col-9 text-secondary"
+                  key={i}
                   css={css`
-                    font-size: 12px;
-                    line-height: 15px;
+                    padding: 0.3rem 1rem 0.3rem 0rem;
+                    @media (max-width: 576px) {
+                      padding: 0.3rem 1rem 0.3rem 0rem;
+                    }
                   `}
                 >
-                  Dreams are important. Not the dreams you have when sleeping.
-                  I’m talking about the dreams you have for your future — the
-                  dreams that keep you going — the dreams that make each day
-                  worth living.
+                  <Link
+                    to={tool.slug}
+                    className="card"
+                    css={css`
+                      box-shadow: 4px 2px 4px 0 rgba(0, 0, 0, 0.3);
+                      @media (max-width: 576px) {
+                        box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+                      }
+                      background-color: #ffffff;
+                      border-radius: 0;
+                      padding: 1rem 1rem 2rem 1rem;
+                      cursor: pointer;
+                      &:hover {
+                        text-decoration: none;
+                      }
+                    `}
+                  >
+                    <h3
+                      css={css`
+                        font-size: 17px;
+                        font-weight: 600;
+                        line-height: 20px;
+                        color: var(--primary);
+                      `}
+                    >
+                      {tool.title}
+                    </h3>
+                    <div className="row">
+                      {tool.mediaThumb && (
+                        <div className="col col-3">
+                          <img
+                            alt={tool.mediaThumb.description}
+                            src={tool.mediaThumb.file.url}
+                          />
+                        </div>
+                      )}
+                      <div
+                        className="col col-9 text-secondary"
+                        css={css`
+                          font-size: 12px;
+                          line-height: 15px;
+                        `}
+                      >
+                        {tool.shortDescription.shortDescription}
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </div>
-            </div>
-          </div>
+              )
+            })}
+          </Slider>
         </div>
       </div>
     </div>
