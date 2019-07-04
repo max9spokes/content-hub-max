@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, navigate, Link } from "gatsby"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import loadable from "@loadable/component"
-const Slider = loadable(() => import("react-slick"))
+import Slider from "react-slick"
 
 export default function Tools() {
   const {

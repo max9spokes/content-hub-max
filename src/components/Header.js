@@ -164,15 +164,16 @@ export default function Header() {
           </div>
         </div>
       </Collapse>
-      {typeof window !== "undefined" && window.location.pathname === "/" && (
-        <div className="buttons w-100  d-flex d-md-none py-3  justify-content-center">
-          {navigation
+
+      <div className="buttons w-100  d-flex d-md-none py-3  justify-content-center">
+        {typeof window !== "undefined" &&
+          window.location.pathname == "/" &&
+          navigation
             .slice(navigation.length - 2, navigation.length)
             .map((link, i) => {
               return <Navlink key={link.url} link={link} />
             })}
-        </div>
-      )}
+      </div>
     </>
   )
 }
