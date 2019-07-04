@@ -2,6 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
+  pathPrefix: `/content`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-sharp",

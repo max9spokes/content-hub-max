@@ -167,7 +167,7 @@ export default function Header() {
 
       <div className="buttons w-100  d-flex d-md-none py-3  justify-content-center">
         {typeof window !== "undefined" &&
-          window.location.pathname == "/" &&
+          window.location.pathname == "/content" &&
           navigation
             .slice(navigation.length - 2, navigation.length)
             .map((link, i) => {
