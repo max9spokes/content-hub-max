@@ -187,6 +187,9 @@ export default function ArticlesListing() {
         key: `${article.slug}${Math.floor(Math.random() * 100).toString()}`,
         node: (
           <Card to={article.slug} className="mb-3">
+            {console.log(
+              article.mediaThumb && article.mediaThumb.fluid.aspectRatio
+            )}
             {article.mediaThumb && (
               <GatsbyImage
                 imgStyle={{ transition: null }}
@@ -198,6 +201,16 @@ export default function ArticlesListing() {
                     transform: scale(1);
                     &:hover {
                       transform: scale(1.03);
+                    }
+                  }
+
+                  @media (max-width: 576px) {
+                    width: 50%;
+                    float: left;
+                    &:first-child {
+                      padding-bottom: ${(1 /
+                        article.mediaThumb.fluid.aspectRatio) *
+                        50}%;
                     }
                   }
                 `}
