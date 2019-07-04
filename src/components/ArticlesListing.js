@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
+import { inherits } from "util"
 
 const Card = styled(Link)`
   display: block;
@@ -188,9 +189,17 @@ export default function ArticlesListing() {
           <Card to={article.slug} className="mb-3">
             {article.mediaThumb && (
               <GatsbyImage
+                imgStyle={{ transition: null }}
                 css={css`
                   margin-bottom: 1.25rem;
                   margin-right: 1rem;
+                  picture > * {
+                    transition: transform 300ms ease-in-out;
+                    transform: scale(1);
+                    &:hover {
+                      transform: scale(1.03);
+                    }
+                  }
                 `}
                 alt={article.mediaThumb.description}
                 fluid={article.mediaThumb.fluid}
