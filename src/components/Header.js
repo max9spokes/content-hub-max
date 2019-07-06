@@ -193,7 +193,7 @@ export default function Header() {
       <div className="buttons w-100  d-flex d-md-none  justify-content-center">
         {(typeof window !== "undefined" &&
           window.location.pathname == pathPrefix) ||
-          (window.location.pathname == "/" && (
+          (typeof window !== "undefined" && window.location.pathname == "/" && (
             <div className="my-3">
               {navigation
                 .slice(navigation.length - 2, navigation.length)
