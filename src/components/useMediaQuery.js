@@ -20,8 +20,7 @@ export default function useMediaQuery() {
       })
     }
 
-    typeof window !== "undefined" &&
-      window.addEventListener("resize", getQueries)
+    window.addEventListener("resize", getQueries)
     return () => {
       window.removeEventListener("resize", getQueries)
     }
