@@ -5,7 +5,6 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
-import { inherits } from "util"
 import useScrollDirection from "./useScrollDirection"
 import useMediaQuery from "./useMediaQuery"
 
@@ -64,7 +63,8 @@ export default function ArticlesListing() {
   // let DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
   let DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
   const [BARITEMS, setBAR] = useState(ITEMS.slice(0, indexOfLabel))
-  const [DROPDOWNITEMS, setDROP] = useState(ITEMS.slice(indexOfLabel + 1))
+  // const [DROPDOWNITEMS, setDROP] = useState(ITEMS.slice(indexOfLabel + 1))
+  const [DROPDOWNITEMS, setDROP] = useState([])
   const ARTICLES = listArticles
     .filter(item => {
       if (filterOptions[0] == selectedFilter) {
@@ -182,7 +182,7 @@ export default function ArticlesListing() {
     })
   useEffect(() => {
     const { offsetWidth, scrollWidth } = barRef.current
-     if (offsetWidth !== scrollWidth) {
+    if (offsetWidth !== scrollWidth) {
       setDROP(DROPDOWNITEMS => [
         BARITEMS[BARITEMS.length - 1],
         ...DROPDOWNITEMS,
@@ -233,38 +233,40 @@ export default function ArticlesListing() {
           })}
         </div>
         <div>
-          <div
-            css={css`
-              display: inline-flex;
-              align-items: center;
-              cursor: pointer;
-            `}
-            onClick={e => setDropdownOpen(s => !s)}
-          >
-            <span
+          {DROPDOWNITEMS.length > 0 && (
+            <div
               css={css`
-                font-size: 12px;
-                font-weight: 600;
-                line-height: 15px;
-                margin-right: 0.25rem;
+                display: inline-flex;
+                align-items: center;
+                cursor: pointer;
               `}
+              onClick={e => setDropdownOpen(s => !s)}
             >
-              {DROPDOWNMENULABEL.slice(1, DROPDOWNMENULABEL.length - 1)}
-            </span>
-            <span
-              className="triangle"
-              css={css`
-                display: inline-block;
-                width: 0;
-                height: 0;
+              <span
+                css={css`
+                  font-size: 12px;
+                  font-weight: 600;
+                  line-height: 15px;
+                  margin-right: 0.25rem;
+                `}
+              >
+                {DROPDOWNMENULABEL.slice(1, DROPDOWNMENULABEL.length - 1)}
+              </span>
+              <span
+                className="triangle"
+                css={css`
+                  display: inline-block;
+                  width: 0;
+                  height: 0;
 
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
+                  border-left: 5px solid transparent;
+                  border-right: 5px solid transparent;
 
-                border-top: 5px solid var(--secondary);
-              `}
-            />
-          </div>
+                  border-top: 5px solid var(--secondary);
+                `}
+              />
+            </div>
+          )}
           <Dropdown setOpen={setDropdownOpen} open={dropdownOpen}>
             {DROPDOWNITEMS.map(item => {
               return (

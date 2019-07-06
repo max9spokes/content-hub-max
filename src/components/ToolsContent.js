@@ -26,7 +26,7 @@ export default function SingleContent({ data: { tool } }) {
             <div
               className="sticky-top"
               css={css`
-                top: ${direction == "up" ? "57px" : 0};
+                top: ${direction == "up" ? "calc(57px + 2rem)" : "2rem"};
               `}
             >
               <h2

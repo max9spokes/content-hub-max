@@ -65,12 +65,16 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const direction = useScrollDirection()
   const {
+    site: { pathPrefix },
     c: {
       channel: [{ channelName, channelLogo }],
       navigation,
     },
   } = useStaticQuery(graphql`
     {
+      site {
+        pathPrefix
+      }
       c: contentfulContentMainScreen {
         channel {
           channelName
@@ -121,6 +125,7 @@ export default function Header() {
                 flex-wrap: nowrap;
                 min-width: 90px;
                 overflow: hidden;
+                margin-left: -15px;
                 &:hover {
                   text-decoration: none;
                 }
@@ -131,7 +136,6 @@ export default function Header() {
                 src={channelLogo.file.url}
                 css={css`
                   position: relative;
-                  left: -15px;
                 `}
                 alt=""
               />
@@ -139,6 +143,7 @@ export default function Header() {
                 className="bold"
                 css={css`
                   color: var(--dark-font);
+                  margin-left: 15px;
                 `}
               >
                 {channelName}
@@ -186,15 +191,17 @@ export default function Header() {
       </Collapse>
 
       <div className="buttons w-100  d-flex d-md-none  justify-content-center">
-        {typeof window !== "undefined" && window.location.pathname == "/" && (
-          <div className="my-3">
-            {navigation
-              .slice(navigation.length - 2, navigation.length)
-              .map((link, i) => {
-                return <Navlink key={link.url} link={link} />
-              })}
-          </div>
-        )}
+        {(typeof window !== "undefined" &&
+          window.location.pathname == pathPrefix) ||
+          (window.location.pathname == "/" && (
+            <div className="my-3">
+              {navigation
+                .slice(navigation.length - 2, navigation.length)
+                .map((link, i) => {
+                  return <Navlink key={link.url} link={link} />
+                })}
+            </div>
+          ))}
       </div>
     </div>
   )

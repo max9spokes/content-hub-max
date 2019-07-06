@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
-  pathPrefix: `/content`,
+  pathPrefix: process.env.NODE_ENV === "development" ? `/` : `/content`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     "gatsby-transformer-sharp",
@@ -21,7 +21,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
-        downloadLocal: true,
+        // downloadLocal: true,
         host: `preview.contentful.com`,
       },
     },
