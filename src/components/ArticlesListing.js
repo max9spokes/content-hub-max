@@ -13,7 +13,7 @@ export default function ArticlesListing() {
   const [active, setActive] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [currentPaginationPage, setCurrentPaginationPage] = useState(0)
-  const direction = useScrollDirection()
+  const [direction] = useScrollDirection()
   const scrollToRef = useRef(null)
   const barRef = useRef(null)
   const {

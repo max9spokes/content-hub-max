@@ -6,6 +6,7 @@ import { SingleImage } from "./SingleImage"
 import ReactIframeResizer from "react-iframe-resizer-super"
 import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
+import ShouldIframeUpdate from "./ShouldIframeUpdate"
 export default function SingleContent({ data: { tool } }) {
   const iframeRef = useRef(null)
   const [direction] = useScrollDirection()
@@ -26,7 +27,7 @@ export default function SingleContent({ data: { tool } }) {
             <div
               className="sticky-top"
               css={css`
-                top: ${direction == "up" ? "calc(57px + 2rem)" : "2rem"};
+                top: 2rem;
               `}
             >
               <h2
@@ -60,27 +61,30 @@ export default function SingleContent({ data: { tool } }) {
           </div>
           <div className="col col-12 col-md-6">
             {tool && tool.tool && tool.tool.localZipFolder && (
-              <ReactIframeResizer
-                iframeResizerOptions={{ checkOrigin: false }}
-                ref={iframeRef}
-                title={tool.title}
-                style={{ height: null }}
-                css={css`
-                  border: none;
-                  width: 100%;
-                  height: ${resizeIframe(iframeRef)};
-                `}
-                src={
-                  process.env.NODE_ENV === "production"
-                    ? tool.tool.localZipFolder
-                    : null
-                }
-                content={
-                  process.env.NODE_ENV === "development"
-                    ? tool.tool.localZipHtmlSrc
-                    : null
-                }
-              />
+              <ShouldIframeUpdate tool={tool}>
+                {" "}
+                <ReactIframeResizer
+                  iframeResizerOptions={{ checkOrigin: false }}
+                  ref={iframeRef}
+                  title={tool.title}
+                  style={{ height: null }}
+                  css={css`
+                    border: none;
+                    width: 100%;
+                    height: ${resizeIframe(iframeRef)};
+                  `}
+                  src={
+                    process.env.NODE_ENV === "production"
+                      ? tool.tool.localZipFolder
+                      : null
+                  }
+                  content={
+                    process.env.NODE_ENV === "development"
+                      ? tool.tool.localZipHtmlSrc
+                      : null
+                  }
+                />
+              </ShouldIframeUpdate>
             )}
             {tool && tool.tool && !tool.tool.localZipFolder && (
               <div>

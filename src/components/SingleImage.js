@@ -6,8 +6,6 @@ import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
 import useMediaQuery from "./useMediaQuery"
 export default function SingleImage(props) {
-  const [direction] = useScrollDirection()
-  const { md } = useMediaQuery()
   return (
     <div
       className={"sticky-top"}
