@@ -12,11 +12,11 @@ export default function useMediaQuery() {
   useEffect(() => {
     const getQueries = () => {
       setBreakpoints({
-        xs: matchMedia("(min-width: 0").matches,
-        sm: matchMedia("(min-width: 576px").matches,
-        md: matchMedia("(min-width: 768px").matches,
-        lg: matchMedia("(min-width: 992px").matches,
-        xl: matchMedia("(min-width: 1200px").matches,
+        xs: matchMedia("(min-width: 0)").matches,
+        sm: matchMedia("(min-width: 576px)").matches,
+        md: matchMedia("(min-width: 768px)").matches,
+        lg: matchMedia("(min-width: 992px)").matches,
+        xl: matchMedia("(min-width: 1200px)").matches,
       })
     }
 

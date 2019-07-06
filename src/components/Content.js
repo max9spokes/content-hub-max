@@ -5,7 +5,13 @@ import css from "@emotion/css"
 
 export default function Content() {
   return (
-    <section>
+    <section
+      css={css`
+        @media (max-width: 768px) {
+          margin-top: 120px;
+        }
+      `}
+    >
       <div className="container mt-2">
         {" "}
         <div className="row  ">

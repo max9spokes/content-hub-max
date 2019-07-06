@@ -10,11 +10,9 @@ export default function SingleImage(props) {
   const { md } = useMediaQuery()
   return (
     <div
-      className={
-        typeof window == "undefined" ? "sticky-top" : md ? "sticky-top" : ""
-      }
+      className={"sticky-top"}
       css={css`
-        top: ${direction == "up" && md ? ".5rem" : ".5rem"};
+        top: 0.5rem;
         border-right: 1px solid #ebebeb;
       `}
     >
