@@ -151,7 +151,7 @@ export default function ArticlesListing() {
                 text-transform: uppercase;
               `}
             >
-              {i} {article.category}
+              {article.category}
             </div>
             <h3
               css={css`
@@ -215,7 +215,6 @@ export default function ArticlesListing() {
           css={css`
             white-space: nowrap;
             overflow: hidden;
-            flex-grow: 1;
           `}
         >
           {BARITEMS.map(item => {
