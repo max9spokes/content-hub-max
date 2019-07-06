@@ -102,7 +102,6 @@ export default function Header() {
       className={"position-fixed"}
       css={css`
         width: 100%;
-        /* position: ${direction == "up" ? "fixed" : "relative"}; */
         opacity: ${offset < 57 ? 1 : direction == "up" ? 1 : 0};
         transform: translateY(
           ${offset < 57 ? "0px" : direction == "up" ? "0px" : "-30px"}
@@ -112,7 +111,7 @@ export default function Header() {
         z-index: 10000;
         background-color: #fff;
         & + * {
-          margin-top:  65px ;
+          margin-top: 65px;
         }
       `}
     >
