@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 
 export default function useScrollDirection(params) {
   const [direction, setDirection] = useState("down")
+  const [offset, setOffset] = useState(0)
 
   useEffect(() => {
     let scrollInit = 0
@@ -11,6 +12,7 @@ export default function useScrollDirection(params) {
           ? "up"
           : "down"
       })
+      setOffset(window.pageYOffset)
       scrollInit = window.pageYOffset
     }
 
@@ -20,5 +22,5 @@ export default function useScrollDirection(params) {
     }
   }, [])
 
-  return direction
+  return [direction, offset]
 }

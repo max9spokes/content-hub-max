@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import css from "@emotion/css"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { Collapse } from "reactstrap"
@@ -63,7 +63,8 @@ const Navlink = ({ link }) => {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const direction = useScrollDirection()
+  const [direction, offset] = useScrollDirection()
+  const navbarRef = useRef(null)
   const {
     site: { pathPrefix },
     c: {
@@ -97,15 +98,21 @@ export default function Header() {
 
   return (
     <div
-      className={direction == "up" ? "position-fixed" : ""}
+      ref={navbarRef}
+      className={"position-fixed"}
       css={css`
         width: 100%;
-        position: ${direction == "up" ? "fixed" : "relative"};
+        /* position: ${direction == "up" ? "fixed" : "relative"}; */
+        opacity: ${offset < 57 ? 1 : direction == "up" ? 1 : 0};
+        transform: translateY(
+          ${offset < 57 ? "0px" : direction == "up" ? "0px" : "-30px"}
+        );
+        transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
         top: 0;
         z-index: 10000;
         background-color: #fff;
         & + * {
-          margin-top: ${direction == "up" ? "57px" : "0px"};
+          margin-top:  65px ;
         }
       `}
     >

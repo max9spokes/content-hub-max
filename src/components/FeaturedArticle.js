@@ -5,7 +5,7 @@ import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
 
 export default function FeaturedArticle() {
-  const direction = useScrollDirection()
+  const [direction] = useScrollDirection()
   const {
     c: {
       featuredArticle: [article],
@@ -46,7 +46,6 @@ export default function FeaturedArticle() {
     article.shortDescription &&
     article.shortDescription.shortDescription.match(/\[.+\]/, "")[0]
   const linkText = linkSrc.slice(1, linkSrc.length - 1)
-  console.log(linkText)
 
   return (
     <div

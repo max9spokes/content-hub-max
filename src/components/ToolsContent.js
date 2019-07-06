@@ -8,7 +8,7 @@ import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
 export default function SingleContent({ data: { tool } }) {
   const iframeRef = useRef(null)
-  const direction = useScrollDirection()
+  const [direction] = useScrollDirection()
   const options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: node => {
@@ -63,7 +63,7 @@ export default function SingleContent({ data: { tool } }) {
               <ReactIframeResizer
                 iframeResizerOptions={{ checkOrigin: false }}
                 ref={iframeRef}
-                title="tool"
+                title={tool.title}
                 style={{ height: null }}
                 css={css`
                   border: none;
