@@ -182,9 +182,7 @@ export default function ArticlesListing() {
     })
   useEffect(() => {
     const { offsetWidth, scrollWidth } = barRef.current
-    console.log(offsetWidth, scrollWidth)
-    console.dir(barRef.current)
-    if (offsetWidth !== scrollWidth) {
+     if (offsetWidth !== scrollWidth) {
       setDROP(DROPDOWNITEMS => [
         BARITEMS[BARITEMS.length - 1],
         ...DROPDOWNITEMS,

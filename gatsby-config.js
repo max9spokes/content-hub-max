@@ -21,7 +21,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
-        // downloadLocal: true,
+        downloadLocal: true,
         host: `preview.contentful.com`,
       },
     },
