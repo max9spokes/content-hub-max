@@ -1,14 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import css from "@emotion/css"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { Collapse } from "reactstrap"
-
+import useScrollDirection from "./useScrollDirection"
 const Navlink = ({ link }) => {
   const btnDefaults = css`
     font-size: 14px;
     line-height: 17px;
     font-weight: 600;
     padding: 0.5em 2.5em;
+    white-space: nowrap;
   `
   return (
     <>
@@ -62,6 +63,7 @@ const Navlink = ({ link }) => {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const direction = useScrollDirection()
   const {
     c: {
       channel: [{ channelName, channelLogo }],
@@ -90,17 +92,35 @@ export default function Header() {
   `)
 
   return (
-    <>
+    <div
+      className={direction == "up" ? "position-fixed" : ""}
+      css={css`
+        width: 100%;
+        position: ${direction == "up" ? "fixed" : "relative"};
+        top: 0;
+        z-index: 10000;
+        background-color: #fff;
+        & + * {
+          margin-top: ${direction == "up" ? "57px" : "0px"};
+        }
+      `}
+    >
       <nav
         css={css`
           border-bottom: 2px solid #fba919;
+          background: #fff;
+          display: block;
         `}
       >
         <div className="container">
           <div className="d-flex d-flex align-items-center justify-content-between">
             <Link
               css={css`
-                display: block;
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+                min-width: 90px;
+                overflow: hidden;
                 &:hover {
                   text-decoration: none;
                 }
@@ -165,16 +185,18 @@ export default function Header() {
         </div>
       </Collapse>
 
-      <div className="buttons w-100  d-flex d-md-none py-3  justify-content-center">
-        {typeof window !== "undefined" &&
-          window.location.pathname == "/content" &&
-          navigation
-            .slice(navigation.length - 2, navigation.length)
-            .map((link, i) => {
-              return <Navlink key={link.url} link={link} />
-            })}
+      <div className="buttons w-100  d-flex d-md-none  justify-content-center">
+        {typeof window !== "undefined" && window.location.pathname == "/" && (
+          <div className="my-3">
+            {navigation
+              .slice(navigation.length - 2, navigation.length)
+              .map((link, i) => {
+                return <Navlink key={link.url} link={link} />
+              })}
+          </div>
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

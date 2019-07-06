@@ -2,8 +2,10 @@ import React from "react"
 import GatsbyImage from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import css from "@emotion/css"
+import useScrollDirection from "./useScrollDirection"
 
 export default function FeaturedArticle() {
+  const direction = useScrollDirection()
   const {
     c: {
       featuredArticle: [article],
@@ -36,11 +38,21 @@ export default function FeaturedArticle() {
       }
     }
   `)
+
+  const description =
+    article.shortDescription &&
+    article.shortDescription.shortDescription.replace(/\[.+\]/, "")
+  const linkSrc =
+    article.shortDescription &&
+    article.shortDescription.shortDescription.match(/\[.+\]/, "")[0]
+  const linkText = linkSrc.slice(1, linkSrc.length - 1)
+  console.log(linkText)
+
   return (
     <div
       className="sticky-top"
       css={css`
-        top: 0.5rem;
+        top: ${direction == "up" ? "0.5rem" : "0.5rem"};
       `}
     >
       {" "}
@@ -90,10 +102,10 @@ export default function FeaturedArticle() {
             margin-bottom: 1.25em;
           `}
         >
-          {article.shortDescription.shortDescription}
+          {description}
         </p>
         <span
-          // to={article.slug}
+          to={article.slug}
           css={css`
             font-size: 12px;
             font-weight: 700;
@@ -105,7 +117,7 @@ export default function FeaturedArticle() {
             }
           `}
         >
-          Read more
+          {linkText}
         </span>
       </Link>
     </div>

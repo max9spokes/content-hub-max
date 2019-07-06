@@ -3,39 +3,37 @@ import GatsbyImage from "gatsby-image"
 import { Link } from "gatsby"
 import { Collapse } from "reactstrap"
 import css from "@emotion/css"
-export class SingleImage extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <div
-        className="sticky-top"
+import useScrollDirection from "./useScrollDirection"
+import useMediaQuery from "./useMediaQuery"
+export default function SingleImage(props) {
+  const direction = useScrollDirection()
+  const { md } = useMediaQuery()
+  return (
+    <div
+      className={md ? "sticky-top" : ""}
+      css={css`
+        top: ${direction == "up" && md ? ".5rem" : ".5rem"};
+        border-right: 1px solid #ebebeb;
+      `}
+    >
+      {" "}
+      <GatsbyImage
+        style={{ position: null }}
         css={css`
-          top: 0rem;
-
-          border-right: 1px solid #ebebeb;
+          width: 100%;
+          @media (min-width: 767px) {
+            height: 100vh;
+            position: relative;
+            width: calc(100% + (100vw - 100%) / 2);
+            left: calc((100vw - 100%) / -2);
+          }
         `}
-      >
-        {" "}
-        <GatsbyImage
-          style={{ position: null }}
-          css={css`
-            width: 100%;
-            @media (min-width: 767px) {
-              height: 100vh;
-              position: relative;
-              width: calc(100% + (100vw - 100%) / 2);
-              left: calc((100vw - 100%) / -2);
-            }
-          `}
-          alt={this.props.mediaThumb.description}
-          fluid={this.props.mediaThumb.fluid}
-        />
-        <Share />
-      </div>
-    )
-  }
+        alt={props.mediaThumb.description}
+        fluid={props.mediaThumb.fluid}
+      />
+      <Share />
+    </div>
+  )
 }
 
 function Share() {

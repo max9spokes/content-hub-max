@@ -24,7 +24,7 @@ export const query = graphql`
       category
       mediaThumb {
         description
-        fluid(maxWidth: 1500) {
+        fluid(maxWidth: 1500, cropFocus: LEFT) {
           base64
           aspectRatio
           src

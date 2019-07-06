@@ -6,98 +6,17 @@ import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { inherits } from "util"
-
-const Card = styled(Link)`
-  display: block;
-  &:hover {
-    text-decoration: none;
-  }
-  &:hover h3 {
-    text-decoration: underline;
-  }
-`
-
-const Item = ({ children, active, block, onClick }) => {
-  return (
-    <span
-      css={css`
-        color: ${active ? "var(--primary)" : "var(--secondary)"};
-        display: ${block ? "block" : "inline"};
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 15px;
-        margin-right: 1.25rem;
-        margin-bottom: ${block ? "1rem" : null};
-        cursor: pointer;
-        &:hover {
-          color: ${active ? "var(--primary)" : "var(--dark)"};
-        }
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      `}
-      onClick={onClick}
-    >
-      {children}
-    </span>
-  )
-}
-const PaginationLink = css`
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 23px;
-  color: var(--secondary);
-  margin: 0 0.75rem;
-  cursor: pointer;
-  &.active {
-    color: var(--primary);
-  }
-`
-
-const Dropdown = ({ children, open, setOpen }) => {
-  const dropRef = useRef(null)
-  function handleClickOutside(event) {
-    if (dropRef && dropRef.current && !dropRef.current.contains(event.target)) {
-      open && setOpen(false)
-    }
-  }
-
-  useEffect(() => {
-    typeof window !== "undefined" &&
-      document.addEventListener("click", handleClickOutside)
-    return () => {
-      typeof window !== "undefined" &&
-        document.removeEventListener("click", handleClickOutside)
-    }
-  })
-  return (
-    <div
-      ref={dropRef}
-      style={{ width: "156px" }}
-      css={css`
-        width: 156px;
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 2.25rem;
-        right: 0rem;
-        padding: 1rem;
-        opacity: ${open ? 1 : 0};
-        height: ${open ? "1000px" : 0};
-        max-height: max-content;
-        transition: all 300ms ease-in-out;
-      `}
-    >
-      {children}
-    </div>
-  )
-}
+import useScrollDirection from "./useScrollDirection"
+import useMediaQuery from "./useMediaQuery"
 
 export default function ArticlesListing() {
+  const { lg } = useMediaQuery()
   const [active, setActive] = useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [currentPaginationPage, setCurrentPaginationPage] = useState(0)
+  const direction = useScrollDirection()
   const scrollToRef = useRef(null)
+  const barRef = useRef(null)
   const {
     c: { filterOptions, listArticles, articlesPerPage, body },
   } = useStaticQuery(graphql`
@@ -141,12 +60,12 @@ export default function ArticlesListing() {
     }
   })
   const indexOfLabel = ITEMS.findIndex(value => /\[.+\]/.test(value.item))
-  const BARITEMS = ITEMS.slice(0, indexOfLabel)
-  const DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
-  const DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
-  const temp = [...listArticles, ...listArticles, ...listArticles]
-  // const ARTICLES = listArticles
-  const ARTICLES = temp
+  // let BARITEMS = ITEMS.slice(0, indexOfLabel)
+  // let DROPDOWNITEMS = ITEMS.slice(indexOfLabel + 1)
+  let DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
+  const [BARITEMS, setBAR] = useState(ITEMS.slice(0, indexOfLabel))
+  const [DROPDOWNITEMS, setDROP] = useState(ITEMS.slice(indexOfLabel + 1))
+  const ARTICLES = listArticles
     .filter(item => {
       if (filterOptions[0] == selectedFilter) {
         return true
@@ -162,7 +81,7 @@ export default function ArticlesListing() {
         return false
       }
     })
-    .map(article => {
+    .map((article, i) => {
       var shortDescription
 
       if (article.shortDescription.shortDescription.length < 200) {
@@ -183,10 +102,18 @@ export default function ArticlesListing() {
         )
         shortDescription = final.text + " ..."
       }
+
       return {
         key: `${article.slug}${Math.floor(Math.random() * 100).toString()}`,
         node: (
-          <Card to={article.slug} className="mb-3">
+          <Card
+            to={
+              `${/^\//.test(article.slug) ? "" : "/"}` +
+              article.slug +
+              `${/\/$/.test(article.slug) ? "" : "/"}`
+            }
+            className="mb-3 clearfix"
+          >
             {article.mediaThumb && (
               <GatsbyImage
                 imgStyle={{ transition: null }}
@@ -224,7 +151,7 @@ export default function ArticlesListing() {
                 text-transform: uppercase;
               `}
             >
-              {article.category}
+              {i} {article.category}
             </div>
             <h3
               css={css`
@@ -253,6 +180,18 @@ export default function ArticlesListing() {
         ),
       }
     })
+  useEffect(() => {
+    const { offsetWidth, scrollWidth } = barRef.current
+    console.log(offsetWidth, scrollWidth)
+    console.dir(barRef.current)
+    if (offsetWidth !== scrollWidth) {
+      setDROP(DROPDOWNITEMS => [
+        BARITEMS[BARITEMS.length - 1],
+        ...DROPDOWNITEMS,
+      ])
+      setBAR(BARITEMS.slice(0, BARITEMS.length - 1))
+    }
+  })
 
   return (
     <div>
@@ -260,17 +199,25 @@ export default function ArticlesListing() {
         id="filter"
         className="sticky-top"
         css={css`
-          top: 0rem;
+          top: ${direction == "up" ? "57px" : 0};
           background-color: #fff;
           border-bottom: 1px solid #979797;
           display: flex;
           padding-top: 0.5rem;
           margin-top: -0.5rem;
           justify-content: space-between;
-          box-shadow: 0px 1rem 0px rgba(255, 255, 255, 1);
+
+          box-shadow: 0px 0.5rem 0.5rem rgba(255, 255, 255, 1);
         `}
       >
-        <div>
+        <div
+          ref={barRef}
+          css={css`
+            white-space: nowrap;
+            overflow: hidden;
+            flex-grow: 1;
+          `}
+        >
           {BARITEMS.map(item => {
             return (
               <Item
@@ -364,41 +311,127 @@ export default function ArticlesListing() {
                 currentPaginationPage,
                 currentPaginationPage + articlesPerPage
               )}
-              minColumnWidth={180}
+              minColumnWidth={lg ? 200 : 245}
             />
           </div>
         </div>
 
         <div id="pagination" className="d-flex justify-content-center mb-3">
           {ARTICLES.length === 0 && <p>No content to display.</p>}
-          {ARTICLES.map((article, index) => {
-            return index % articlesPerPage === 0 ? (
-              <span
-                key={index}
-                index={index}
-                className={`${index === currentPaginationPage && "active"}`}
-                css={PaginationLink}
-                onClick={e => {
-                  setCurrentPaginationPage(index)
-                  console.log(scrollToRef.current.getBoundingClientRect())
+          {ARTICLES.length / articlesPerPage > 1 &&
+            ARTICLES.map((article, index) => {
+              return index % articlesPerPage === 0 ? (
+                <span
+                  key={index}
+                  index={index}
+                  className={`${index === currentPaginationPage && "active"}`}
+                  css={PaginationLink}
+                  onClick={e => {
+                    setCurrentPaginationPage(index)
 
-                  typeof window !== "undefined" &&
-                    window.scrollTo({
-                      top:
-                        window.scrollY +
-                        scrollToRef.current.getBoundingClientRect().top -
-                        20,
-                      left: 0,
-                      behavior: "smooth",
-                    })
-                }}
-              >
-                {index / articlesPerPage + 1}
-              </span>
-            ) : null
-          })}
+                    typeof window !== "undefined" &&
+                      window.scrollTo({
+                        top:
+                          window.scrollY +
+                          scrollToRef.current.getBoundingClientRect().top -
+                          20,
+                        left: 0,
+                        behavior: "smooth",
+                      })
+                  }}
+                >
+                  {index / articlesPerPage + 1}
+                </span>
+              ) : null
+            })}
         </div>
       </div>
+    </div>
+  )
+}
+
+const Card = styled(Link)`
+  display: block;
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover h3 {
+    text-decoration: underline;
+  }
+`
+
+const Item = ({ children, active, block, onClick }) => {
+  return (
+    <span
+      css={css`
+        color: ${active ? "var(--primary)" : "var(--secondary)"};
+        display: ${block ? "block" : "inline"};
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+        margin-right: 1.25rem;
+        margin-bottom: ${block ? "1rem" : null};
+        cursor: pointer;
+        &:hover {
+          color: ${active ? "var(--primary)" : "var(--dark)"};
+        }
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      `}
+      onClick={onClick}
+    >
+      {children}
+    </span>
+  )
+}
+const PaginationLink = css`
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  color: var(--secondary);
+  margin: 0 0.75rem;
+  cursor: pointer;
+  &.active {
+    color: var(--primary);
+  }
+`
+
+const Dropdown = ({ children, open, setOpen }) => {
+  const dropRef = useRef(null)
+  function handleClickOutside(event) {
+    if (dropRef && dropRef.current && !dropRef.current.contains(event.target)) {
+      open && setOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      document.addEventListener("click", handleClickOutside)
+    return () => {
+      typeof window !== "undefined" &&
+        document.removeEventListener("click", handleClickOutside)
+    }
+  })
+  return (
+    <div
+      ref={dropRef}
+      style={{ width: "156px" }}
+      css={css`
+        width: 156px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 2.25rem;
+        right: 0rem;
+        padding: 1rem;
+        opacity: ${open ? 1 : 0};
+        height: ${open ? "1000px" : 0};
+        max-height: max-content;
+        transition: all 300ms ease-in-out;
+      `}
+    >
+      {children}
     </div>
   )
 }

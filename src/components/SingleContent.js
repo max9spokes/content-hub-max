@@ -2,18 +2,24 @@ import React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { SingleImage } from "./SingleImage"
+import SingleImage from "./SingleImage"
 import css from "@emotion/css"
 export default function SingleContent({ data: { article } }) {
   const options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: node => {
-        const { file } = node.data.target.fields
-        return (
+        const file =
+          node.data &&
+          node.data.target &&
+          node.data.target.fields &&
+          node.data.target.fields.file
+        return file ? (
           <img
             className="d-block mr-3 my-2 m w-50 float-left"
             src={file["en-US"].url}
           />
+        ) : (
+          <></>
         )
       },
       [BLOCKS.QUOTE]: (node, children) => {
