@@ -9,6 +9,8 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-sass",
     "gatsby-plugin-emotion",
+    `gatsby-plugin-playground`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -16,13 +18,21 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // {
+    //   resolve: `gatsby-source-contentful`,
+    //   options: {
+    //     spaceId: process.env.CONTENTFUL_SPACE_ID,
+    //     accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
+    //     // downloadLocal: true,
+    //     host: `preview.contentful.com`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
-        // downloadLocal: true,
-        host: `preview.contentful.com`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        // host: `preview.contentful.com`,
       },
     },
     `gatsby-plugin-netlify`,
