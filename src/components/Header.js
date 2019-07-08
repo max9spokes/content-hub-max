@@ -95,7 +95,7 @@ export default function Header() {
       }
     }
   `)
-  direction !== "up" && isMenuOpen && setIsMenuOpen(false)
+
   return (
     <div
       ref={navbarRef}
