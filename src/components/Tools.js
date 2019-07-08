@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import loadable from "@loadable/component"
 import Slider from "react-slick"
+import GatsbyImage from "gatsby-image"
 
 export default function Tools() {
   const {
@@ -21,8 +22,18 @@ export default function Tools() {
 
           mediaThumb {
             description
+            fluid {
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
             file {
               url
+              contentType
             }
           }
         }
@@ -148,10 +159,22 @@ export default function Tools() {
                     <div className="row">
                       {tool.mediaThumb && (
                         <div className="col col-3">
-                          <img
-                            alt={tool.mediaThumb.description}
-                            src={tool.mediaThumb.file.url}
-                          />
+                          {tool.mediaThumb &&
+                            tool.mediaThumb.file.contentType !==
+                              "image/svg+xml" && (
+                              <GatsbyImage
+                                alt={tool.mediaThumb.description}
+                                fluid={tool.mediaThumb.fluid}
+                              />
+                            )}
+                          {tool.mediaThumb &&
+                            tool.mediaThumb.file.contentType ==
+                              "image/svg+xml" && (
+                              <img
+                                alt={tool.mediaThumb.description}
+                                src={tool.mediaThumb.file.url}
+                              />
+                            )}
                         </div>
                       )}
                       <div

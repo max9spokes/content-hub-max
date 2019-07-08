@@ -3,6 +3,7 @@ import Helmet from "react-helmet"
 import Layout from "../components/layouts/main"
 import ToolsContent from "../components/ToolsContent"
 import Tools from "../components/Tools"
+import GatsbyImage from "gatsby-image"
 import { graphql } from "gatsby"
 function Index({ data }) {
   return (
@@ -27,13 +28,24 @@ export const query = graphql`
 
       mediaThumb {
         description
+        fluid {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+        }
         file {
           url
+          contentType
         }
       }
       tool {
         localZipFolder
         localZipHtmlSrc
+
         file {
           url
           fileName

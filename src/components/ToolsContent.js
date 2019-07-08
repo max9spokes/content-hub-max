@@ -6,6 +6,8 @@ import { SingleImage } from "./SingleImage"
 import ReactIframeResizer from "react-iframe-resizer-super"
 import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
+
+import GatsbyImage from "gatsby-image"
 import ShouldIframeUpdate from "./ShouldIframeUpdate"
 export default function SingleContent({ data: { tool } }) {
   const iframeRef = useRef(null)
@@ -41,11 +43,22 @@ export default function SingleContent({ data: { tool } }) {
               >
                 {tool.title}
               </h2>
-              <img
-                src={tool.mediaThumb.file.url}
-                alt=""
-                className="my-4 mx-auto d-block"
-              />
+              {tool.mediaThumb &&
+                tool.mediaThumb.file.contentType !== "image/svg+xml" && (
+                  <GatsbyImage
+                    alt={tool.mediaThumb.description}
+                    fluid={tool.mediaThumb.fluid}
+                  />
+                )}
+              {tool.mediaThumb &&
+                tool.mediaThumb.file.contentType == "image/svg+xml" && (
+                  <img
+                    className="my-4 mx-auto d-block"
+                    alt={tool.mediaThumb.description}
+                    src={tool.mediaThumb.file.url}
+                  />
+                )}
+
               <div
                 css={css`
                   font-size: 14px;
@@ -90,11 +103,21 @@ export default function SingleContent({ data: { tool } }) {
               <div>
                 <a href={tool.tool.file.url}>
                   {" "}
-                  <img
-                    src={tool.mediaThumb.file.url}
-                    alt=""
-                    className="my-4 mx-auto d-block"
-                  />
+                  {tool.mediaThumb &&
+                    tool.mediaThumb.file.contentType !== "image/svg+xml" && (
+                      <GatsbyImage
+                        alt={tool.mediaThumb.description}
+                        fluid={tool.mediaThumb.fluid}
+                      />
+                    )}
+                  {tool.mediaThumb &&
+                    tool.mediaThumb.file.contentType == "image/svg+xml" && (
+                      <img
+                        className="my-4 mx-auto d-block"
+                        alt={tool.mediaThumb.description}
+                        src={tool.mediaThumb.file.url}
+                      />
+                    )}
                   <div className="text-center">Download</div>
                 </a>
               </div>

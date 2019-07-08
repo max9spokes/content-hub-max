@@ -95,7 +95,7 @@ export default function Header() {
       }
     }
   `)
-
+  direction !== "up" && isMenuOpen && setIsMenuOpen(false)
   return (
     <div
       ref={navbarRef}
@@ -104,7 +104,7 @@ export default function Header() {
         width: 100%;
         opacity: ${offset < 57 ? 1 : direction == "up" ? 1 : 0};
         transform: translateY(
-          ${offset < 57 ? "0px" : direction == "up" ? "0px" : "-30px"}
+          ${offset < 57 ? "0px" : direction == "up" ? "0px" : "-120px"}
         );
         transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
         top: 0;

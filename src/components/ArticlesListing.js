@@ -64,7 +64,7 @@ export default function ArticlesListing() {
   let DROPDOWNMENULABEL = ITEMS[indexOfLabel].item
   const [BARITEMS, setBAR] = useState(ITEMS.slice(0, indexOfLabel))
   // const [DROPDOWNITEMS, setDROP] = useState(ITEMS.slice(indexOfLabel + 1))
-  const [DROPDOWNITEMS, setDROP] = useState([])
+  const [DROPDOWNITEMS, setDROP] = useState(ITEMS.slice(indexOfLabel + 1))
   const ARTICLES = listArticles
     .filter(item => {
       if (filterOptions[0] == selectedFilter) {

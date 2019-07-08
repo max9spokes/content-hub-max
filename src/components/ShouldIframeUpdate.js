@@ -6,7 +6,10 @@ export default class ShouldIframeUpdate extends Component {
   }
   shouldComponentUpdate(nextProps) {
     return (
-      nextProps.tool.tool.localZipFolder !== this.props.tool.tool.localZipFolder
+      nextProps.tool.tool.localZipFolder !==
+        this.props.tool.tool.localZipFolder ||
+      nextProps.tool.tool.localZipHtmlSrc !==
+        this.props.tool.tool.localZipHtmlSrc
     )
   }
   render() {

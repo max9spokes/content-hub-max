@@ -14,7 +14,6 @@ export default function useScrollDirection(params) {
           : "down"
 
       if (newDirection !== initDirection) {
-        console.log("new direction", newDirection)
         setDirection(newDirection, direction)
       }
 
@@ -23,7 +22,6 @@ export default function useScrollDirection(params) {
       const nOL = window.pageYOffset > 57 ? "down" : "up"
       const OL = scrollInit > 57 ? "down" : "up"
       if (nOL !== OL) {
-        console.log("offset", nOL, OL, offset)
         setOffset(window.pageYOffset)
       }
       scrollInit = window.pageYOffset

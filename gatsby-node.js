@@ -198,7 +198,7 @@ exports.createResolvers = ({
               )
             }
 
-            return data.toString()
+            return data ? data.toString() : data
           } else {
             return null
           }
