@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from "react"
 import css from "@emotion/css"
 import styled from "@emotion/styled"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { Masonry } from "react-masonry-responsive"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import useScrollDirection from "./useScrollDirection"
 import useMediaQuery from "./useMediaQuery"
+import { MasonaryList } from "./MasonaryList"
 
 export default function ArticlesListing() {
   const { lg } = useMediaQuery()
@@ -104,7 +104,7 @@ export default function ArticlesListing() {
       }
 
       return {
-        key: `${article.slug}${Math.floor(Math.random() * 100).toString()}`,
+        key: `${article.slug}`,
         node: (
           <Card
             to={
@@ -302,18 +302,14 @@ export default function ArticlesListing() {
         >
           {documentToReactComponents(body.json)}
         </div>
-        <div id="list">
-          <div>
-            <Masonry
-              gap={20}
-              items={ARTICLES.slice(
-                currentPaginationPage,
-                currentPaginationPage + articlesPerPage
-              )}
-              minColumnWidth={lg ? 200 : 245}
-            />
-          </div>
-        </div>
+        <MasonaryList
+          windowWidth={typeof window !== "undefined" ? window.innerWidth : null}
+          lg={lg}
+          selectedFilter={selectedFilter}
+          currentPaginationPage={currentPaginationPage}
+          data={ARTICLES}
+          articlesPerPage={articlesPerPage}
+        />
 
         <div id="pagination" className="d-flex justify-content-center mb-3">
           {ARTICLES.length === 0 && <p>No content to display.</p>}

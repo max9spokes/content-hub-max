@@ -23,7 +23,7 @@ export default function Tools() {
           mediaThumb {
             description
             fluid {
-              tracedSVG
+              base64
               aspectRatio
               src
               srcSet
