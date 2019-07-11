@@ -167,7 +167,7 @@ exports.createResolvers = ({
               }
             })
 
-            return `/iframes/${source.internal.contentDigest}${
+            return `/content/iframes/${source.internal.contentDigest}${
               indexFile ? "/" + indexFile : ""
             }`
           } else {
