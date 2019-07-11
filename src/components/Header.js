@@ -11,9 +11,10 @@ const Navlink = ({ link }) => {
     padding: 0.5em 2.5em;
     white-space: nowrap;
   `
+
   return (
     <>
-      {!link.openNewTab && (
+      {!link.prefix && !link.openNewTab && (
         <Link
           to={link.url}
           css={[
@@ -37,20 +38,49 @@ const Navlink = ({ link }) => {
           {link.title}
         </Link>
       )}
-      {link.openNewTab && (
+      {!link.prefix && link.openNewTab && (
         <a
           href={link.url}
-          css={css`
-            color: ${link.style !== "Primary-CTA" ? "var(--dark-font)" : null};
-            @media (max-width: 766px) {
-              padding-top: 0.35rem;
-              padding-bottom: 0.35rem;
-            }
-          `}
+          css={[
+            css`
+              color: ${link.style !== "Primary-CTA"
+                ? "var(--dark-font)"
+                : null};
+
+              @media (max-width: 766px) {
+                padding-top: 0.35rem;
+                padding-bottom: 0.35rem;
+              }
+            `,
+            link.style !== "Link" ? btnDefaults : "default",
+          ]}
           target="_blank"
-          className={`${
-            link.style === "Primary-CTA" ? "btn btn-primary" : null
-          } ${
+          className={`
+           ${link.style === "Primary-CTA" ? "btn btn-primary" : null} ${
+            link.style === "Secondary-CTA" ? "btn btn-outline-primary" : null
+          } semibold mx-3`}
+        >
+          {link.title}
+        </a>
+      )}
+      {link.prefix && !link.openNewTab && (
+        <a
+          href={link.url}
+          css={[
+            css`
+              color: ${link.style !== "Primary-CTA"
+                ? "var(--dark-font)"
+                : null};
+
+              @media (max-width: 766px) {
+                padding-top: 0.35rem;
+                padding-bottom: 0.35rem;
+              }
+            `,
+            link.style !== "Link" ? btnDefaults : "default",
+          ]}
+          className={`
+           ${link.style === "Primary-CTA" ? "btn btn-primary" : null} ${
             link.style === "Secondary-CTA" ? "btn btn-outline-primary" : null
           } semibold mx-3`}
         >
@@ -90,6 +120,7 @@ export default function Header() {
           title
           url
           style
+          prefix
           openNewTab
         }
       }
@@ -160,7 +191,7 @@ export default function Header() {
                 return <Navlink key={link.url} link={link} />
               })}
             </div>
-            <div className="buttons   d-none d-md-flex  align-items-center">
+            <div className="buttons d-none d-md-flex align-items-center">
               {navigation
                 .slice(navigation.length - 2, navigation.length)
                 .map((link, i) => {
