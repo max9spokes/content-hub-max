@@ -98,7 +98,7 @@ export default function Header() {
   const {
     site: { pathPrefix },
     c: {
-      channel: [{ channelName, channelLogo }],
+      channel: [{ channelProductMarketName, channelLogo }],
       navigation,
     },
   } = useStaticQuery(graphql`
@@ -108,7 +108,7 @@ export default function Header() {
       }
       c: contentfulContentMainScreen {
         channel {
-          channelName
+          channelProductMarketName
           channelLogo {
             title
             file {
@@ -183,7 +183,7 @@ export default function Header() {
                   margin-left: 15px;
                 `}
               >
-                {channelName}
+                {channelProductMarketName}
               </span>
             </Link>
             <div className="navlinks d-none d-md-flex align-items-center">
