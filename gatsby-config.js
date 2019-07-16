@@ -10,6 +10,12 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-emotion",
     `gatsby-plugin-playground`,
+        {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/images/favicon.png",
+      },
+    },
 
     {
       resolve: `gatsby-source-filesystem`,
