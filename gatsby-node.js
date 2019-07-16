@@ -101,7 +101,7 @@ exports.onCreateNode = async ({
     const parent = getNode(node.parent)
     const { name, absolutePath } = node
     const destination = path.resolve(
-      `./public/content/iframes/${parent.internal.contentDigest}`
+      `./public/iframes/${parent.internal.contentDigest}`
     )
 
     extract(absolutePath, { dir: destination }, function(err) {
@@ -158,7 +158,7 @@ exports.createResolvers = ({
             let indexFile = null
             var files = fs.readdirSync(
               path.resolve(
-                `./public/content/iframes/${source.internal.contentDigest}`
+                `./public/iframes/${source.internal.contentDigest}`
               )
             )
             files.forEach(file => {
@@ -182,7 +182,7 @@ exports.createResolvers = ({
             let indexFile = null
             var files = fs.readdirSync(
               path.resolve(
-                `./public/content/iframes/${source.internal.contentDigest}`
+                `./public/iframes/${source.internal.contentDigest}`
               )
             )
             files.forEach(file => {
@@ -194,7 +194,7 @@ exports.createResolvers = ({
             if (indexFile) {
               var data = fs.readFileSync(
                 path.resolve(
-                  `./public/content/iframes/${
+                  `./public/iframes/${
                     source.internal.contentDigest
                   }/${indexFile}`
                 ),
