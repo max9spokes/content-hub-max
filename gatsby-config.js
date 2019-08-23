@@ -10,7 +10,7 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-emotion",
     `gatsby-plugin-playground`,
-        {
+    {
       resolve: `gatsby-plugin-favicon`,
       options: {
         logo: "./src/images/favicon.png",
@@ -24,22 +24,22 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
-        // downloadLocal: true,
-        host: `preview.contentful.com`,
-      },
-    },
     // {
     //   resolve: `gatsby-source-contentful`,
     //   options: {
     //     spaceId: process.env.CONTENTFUL_SPACE_ID,
-    //     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    //     accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
+    //     // downloadLocal: true,
+    //     host: `preview.contentful.com`,
     //   },
     // },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-google-analytics`,
