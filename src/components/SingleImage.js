@@ -10,7 +10,7 @@ export default function SingleImage(props) {
     <div
       className={"sticky-top"}
       css={css`
-        top: 0.5rem;
+        top: calc(57px);
         border-right: 1px solid #ebebeb;
       `}
     >
@@ -20,7 +20,7 @@ export default function SingleImage(props) {
         css={css`
           width: 100%;
           @media (min-width: 767px) {
-            height: 100vh;
+            height: calc(100vh - 57px);
             position: relative;
             width: calc(100% + (100vw - 100%) / 2);
             left: calc((100vw - 100%) / -2);
@@ -64,7 +64,7 @@ function Share() {
               margin-left: 0.5rem;
               margin-right: 0.5rem;
               background: #fff;
-              box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+              box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.3);
               border-radius: 4px;
               cursor: pointer;
             }

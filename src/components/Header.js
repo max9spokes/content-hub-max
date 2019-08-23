@@ -133,10 +133,10 @@ export default function Header() {
       className={"position-fixed"}
       css={css`
         width: 100%;
-        opacity: ${offset < 57 ? 1 : direction == "up" ? 1 : 0};
+        /* opacity: 1;
         transform: translateY(
           ${offset < 57 ? "0px" : direction == "up" ? "0px" : "-120px"}
-        );
+        ); */
         transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
         top: 0;
         z-index: 10000;

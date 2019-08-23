@@ -4,6 +4,7 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { useStaticQuery, graphql } from "gatsby"
 import SingleImage from "./SingleImage"
 import css from "@emotion/css"
+import BackToTheTop from "./BackToTheTop"
 export default function SingleContent({ data: { article } }) {
   const options = {
     renderNode: {
@@ -113,6 +114,7 @@ export default function SingleContent({ data: { article } }) {
               </div>
             </div>
           </div>
+          <BackToTheTop />
         </section>
       )}
     </>

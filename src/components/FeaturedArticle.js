@@ -51,7 +51,13 @@ export default function FeaturedArticle() {
     <div
       className="sticky-top"
       css={css`
-        top: ${direction == "up" ? "0.5rem" : "0.5rem"};
+        top: calc(0.5rem + 57px);
+        @media (min-width: 992px) {
+          display: flex;
+          flex-flow: column nowrap;
+          max-height: calc(100vh - 0.5rem - 60px);
+          height: 100vh;
+        }
       `}
     >
       {" "}
@@ -59,10 +65,13 @@ export default function FeaturedArticle() {
         <GatsbyImage
           css={css`
             width: 100%;
+
             @media (min-width: 992px) {
+              flex-grow: 3;
               position: relative;
+
               width: calc(100% + (100vw - 100%) / 2);
-              left: calc((100vw - 100%) / -2);
+              margin-left: calc((100vw - 100%) / -2);
             }
           `}
           alt={article.mediaThumb.description}
@@ -110,10 +119,7 @@ export default function FeaturedArticle() {
             font-weight: 700;
             color: var(--dark-font);
             display: inline-block;
-            margin-bottom: 3rem;
-            @media (min-width: 767px) {
-              margin-bottom: 7rem;
-            }
+            margin-bottom: 1rem;
           `}
         >
           {linkText}

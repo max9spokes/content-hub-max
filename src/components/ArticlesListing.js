@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import querystring from "query-string"
 import css from "@emotion/css"
 import styled from "@emotion/styled"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
@@ -16,6 +17,7 @@ export default function ArticlesListing() {
   const [direction] = useScrollDirection()
   const scrollToRef = useRef(null)
   const barRef = useRef(null)
+
   const {
     c: { filterOptions, listArticles, articlesPerPage, body },
   } = useStaticQuery(graphql`
@@ -51,7 +53,31 @@ export default function ArticlesListing() {
       }
     }
   `)
+
   const [selectedFilter, setSelectedFilter] = useState(filterOptions[0])
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = decodeURI(window.location.hash.substring(1))
+
+      if (filterOptions.includes(hash)) {
+        let i = filterOptions.indexOf(hash)
+        setActive(i)
+        setSelectedFilter(hash)
+      }
+    }
+  }, [])
+  useEffect(() => {
+    const topic = window.location.hash
+    if (selectedFilter === "All") {
+      window.history.pushState(
+        null,
+        null,
+        window.location.href.replace(/#.+/, "")
+      )
+    } else {
+      window.history.pushState(null, null, `#${encodeURI(selectedFilter)}`)
+    }
+  }, [selectedFilter])
   const ITEMS = filterOptions.map((item, index) => {
     return {
       item,
@@ -197,7 +223,7 @@ export default function ArticlesListing() {
         id="filter"
         className="sticky-top"
         css={css`
-          top: ${direction == "up" ? "57px" : 0};
+          top: ${direction == "up" ? "118px" : 0};
           background-color: #fff;
           border-bottom: 1px solid #979797;
           display: flex;
@@ -206,6 +232,10 @@ export default function ArticlesListing() {
           justify-content: space-between;
 
           box-shadow: 0px 0.5rem 0.5rem rgba(255, 255, 255, 1);
+          /* @md */
+          @media (min-width: 768px) {
+            top: ${direction == "up" ? "57px" : 0};
+          }
         `}
       >
         <div
@@ -421,8 +451,9 @@ const Dropdown = ({ children, open, setOpen }) => {
         right: 0rem;
         padding: 1rem;
         opacity: ${open ? 1 : 0};
-        height: ${open ? "1000px" : 0};
-        max-height: max-content;
+
+        transform-origin: top right;
+        transform: scale(${open ? "1" : ".5"});
         transition: all 300ms ease-in-out;
       `}
     >
