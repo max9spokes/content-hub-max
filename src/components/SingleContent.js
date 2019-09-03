@@ -10,11 +10,11 @@ import InarticleTool from "./InarticleTool"
 export default function SingleContent({ data: { article } }) {
   const { embededTools } = article
 
-  console.log("embededTools", embededTools)
-
   const options = {
     renderNode: {
       "embedded-entry-block": node => {
+        console.log(node)
+
         const id = node.data.target.sys.id
         console.log("EMBEDED", id, embededTools[0])
         const tool = embededTools.filter(t => id.includes(t.contentful_id))[0]

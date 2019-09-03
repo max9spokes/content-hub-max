@@ -63,6 +63,25 @@ export default function Tools() {
         </h2>
         <div
           css={css`
+            .slick-prev:before,
+            .slick-next:before {
+              color: #032e66;
+            }
+            .slick-next,
+            .slick-prev {
+              top: 70px;
+
+              /* @md */
+              @media (max-width: 767px) {
+                display: none !important;
+              }
+            }
+            .slick-next {
+              right: -35px;
+            }
+            .slick-prev {
+              left: -45px;
+            }
             .slick-track {
               min-width: 100%;
             }
@@ -92,7 +111,7 @@ export default function Tools() {
           `}
         >
           <Slider
-            arrows={false}
+            arrows={true}
             dots={true}
             infinite={tools.length > 3}
             centerMode={false}
