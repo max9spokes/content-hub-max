@@ -192,7 +192,7 @@ export default function ArticlesListing() {
                   margin-right: 1rem;
                   width: auto;
                   height: 130px;
-                  margin: 0 auto;
+                  margin: 0 auto 1rem auto;
                   display: block;
                   transition: transform 300ms ease-in-out;
                   transform: scale(1);
