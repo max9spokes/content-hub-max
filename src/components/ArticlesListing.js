@@ -190,7 +190,10 @@ export default function ArticlesListing() {
                 css={css`
                   margin-bottom: 1.25rem;
                   margin-right: 1rem;
-                  width: 100%;
+                  width: auto;
+                  height: 130px;
+                  margin: 0 auto;
+                  display: block;
                   transition: transform 300ms ease-in-out;
                   transform: scale(1);
                   &:hover {
