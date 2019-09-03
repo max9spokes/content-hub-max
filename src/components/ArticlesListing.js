@@ -29,24 +29,40 @@ export default function ArticlesListing() {
           json
         }
         listArticles {
-          slug
-          title
-          category
-          topic
-          shortDescription {
-            id
-            shortDescription
+          __typename
+          ... on ContentfulContentToolsTemplates {
+            slug
+            title
+            category
+            topic
+            shortDescription {
+              id
+              shortDescription
+            }
+            mediaThumb {
+              file {
+                url
+              }
+              description
+              fluid(maxWidth: 400) {
+                ...GatsbyContentfulFluid
+              }
+            }
           }
-          mediaThumb {
-            description
-            fluid(maxWidth: 400) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
+          ... on ContentfulContentLongRead {
+            slug
+            title
+            category
+            topic
+            shortDescription {
+              id
+              shortDescription
+            }
+            mediaThumb {
+              description
+              fluid(maxWidth: 400) {
+                ...GatsbyContentfulFluid
+              }
             }
           }
         }
