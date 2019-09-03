@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import querystring from "query-string"
 import css from "@emotion/css"
+import has from "lodash.has"
 import styled from "@emotion/styled"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Link, useStaticQuery, graphql } from "gatsby"
@@ -156,7 +157,8 @@ export default function ArticlesListing() {
             }
             className="mb-3 clearfix"
           >
-            {article.mediaThumb && (
+            {console.log(has(article, "mediaThumb.fluid.src"), article)}
+            {article.mediaThumb.fluid.src ? (
               <GatsbyImage
                 imgStyle={{ transition: null }}
                 css={css`
@@ -182,6 +184,26 @@ export default function ArticlesListing() {
                 `}
                 alt={article.mediaThumb.description}
                 fluid={article.mediaThumb.fluid}
+              />
+            ) : (
+              <img
+                css={css`
+                  margin-bottom: 1.25rem;
+                  margin-right: 1rem;
+                  width: 100%;
+                  transition: transform 300ms ease-in-out;
+                  transform: scale(1);
+                  &:hover {
+                    transform: scale(1.03);
+                  }
+
+                  @media (max-width: 576px) {
+                    width: 50%;
+                    float: left;
+                  }
+                `}
+                alt={article.mediaThumb.description}
+                src={article.mediaThumb.file.url}
               />
             )}
             <div
