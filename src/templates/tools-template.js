@@ -3,7 +3,7 @@ import Helmet from "react-helmet"
 import Layout from "../components/layouts/main"
 import ToolsContent from "../components/ToolsContent"
 import Tools from "../components/Tools"
-import GatsbyImage from "gatsby-image"      
+import GatsbyImage from "gatsby-image"
 import { graphql } from "gatsby"
 function Index({ data }) {
   return (

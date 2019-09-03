@@ -47,7 +47,6 @@ function Share() {
       `}
     >
       <div
-        isOpen={open}
         css={css`
           margin-right: 0.5rem;
         `}

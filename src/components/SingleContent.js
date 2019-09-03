@@ -1,13 +1,28 @@
-import React from "react"
+import React, { useRef } from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { BLOCKS } from "@contentful/rich-text-types"
 import SingleImage from "./SingleImage"
 import css from "@emotion/css"
 import BackToTheTop from "./BackToTheTop"
+import ReactIframeResizer from "react-iframe-resizer-super"
+import InarticleTool from "./InarticleTool"
+
 export default function SingleContent({ data: { article } }) {
+  const { embededTools } = article
+
+  console.log("embededTools", embededTools)
+
   const options = {
     renderNode: {
+      "embedded-entry-block": node => {
+        const id = node.data.target.sys.id
+        console.log("EMBEDED", id, embededTools[0])
+        const tool = embededTools.filter(t => id.includes(t.contentful_id))[0]
+        console.log(tool)
+
+        return <InarticleTool tool={tool}></InarticleTool>
+      },
+
       [BLOCKS.EMBEDDED_ASSET]: node => {
         const file =
           node.data &&
@@ -23,6 +38,7 @@ export default function SingleContent({ data: { article } }) {
           <></>
         )
       },
+
       [BLOCKS.QUOTE]: (node, children) => {
         return (
           <blockquote
@@ -46,6 +62,7 @@ export default function SingleContent({ data: { article } }) {
     ? article.body.json.content[0].content[0].value
     : null
   const CONTENT = article && article.body && article.body.json
+
   isFirstNodeH2 && CONTENT.content.shift()
 
   return (

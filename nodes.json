@@ -1,0 +1,544 @@
+{
+    "nodeType": "document",
+    "data": {},
+    "content": [
+        {
+            "nodeType": "embedded-entry-block",
+            "content": [],
+            "data": {
+                "target": {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "rhffukznzwn4"
+                            }
+                        },
+                        "type": "Entry",
+                        "id": "c6EhSw9Xuod2FbaKiYNPv7a",
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "contentToolsTemplates"
+                            }
+                        },
+                        "revision": 4,
+                        "createdAt": "2019-08-22T21:44:40.392Z",
+                        "updatedAt": "2019-08-29T04:02:36.020Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        }
+                    },
+                    "fields": {
+                        "title": {
+                            "en-US": "Cash flow forecast template"
+                        },
+                        "slug": {
+                            "en-US": "cash-flow-forecast-template"
+                        },
+                        "category": {
+                            "en-US": "Guide"
+                        },
+                        "topic": {
+                            "en-US": [
+                                "Starting up new",
+                                "Growing existing",
+                                "Financial education",
+                                "Tools & Templates"
+                            ]
+                        },
+                        "mediaThumb": {
+                            "en-US": {
+                                "sys": {
+                                    "space": {
+                                        "sys": {
+                                            "type": "Link",
+                                            "linkType": "Space",
+                                            "id": "rhffukznzwn4"
+                                        }
+                                    },
+                                    "type": "Asset",
+                                    "id": "c3j1SKtA3Aut9O1DRdgzEw1",
+                                    "revision": 1,
+                                    "createdAt": "2019-08-28T00:39:18.863Z",
+                                    "updatedAt": "2019-08-28T00:39:38.949Z",
+                                    "environment": {
+                                        "sys": {
+                                            "id": "master",
+                                            "type": "Link",
+                                            "linkType": "Environment"
+                                        }
+                                    }
+                                },
+                                "fields": {
+                                    "title": {
+                                        "en-US": "BNZ template icon"
+                                    },
+                                    "description": {
+                                        "en-US": "BNZ template icon"
+                                    },
+                                    "file": {
+                                        "en-US": {
+                                            "url": "//images.ctfassets.net/rhffukznzwn4/3j1SKtA3Aut9O1DRdgzEw1/c7ab66309470d6b2e880bc158d78e3a3/BNZ_template_icon.svg",
+                                            "details": {
+                                                "size": 5131,
+                                                "image": {
+                                                    "width": 61,
+                                                    "height": 61
+                                                }
+                                            },
+                                            "fileName": "BNZ template icon.svg",
+                                            "contentType": "image/svg+xml"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "shortDescription": {
+                            "en-US": "Our cash flow forecast template can help you to forecast your cash flow on a month-to-month basis, or for the whole year. "
+                        },
+                        "body": {
+                            "en-US": {
+                                "data": {},
+                                "content": [
+                                    {
+                                        "data": {},
+                                        "content": [
+                                            {
+                                                "data": {},
+                                                "marks": [],
+                                                "value": "This cash flow forecast template helps you to forecast cash flow on a month-to-month basis, or for the whole year. ",
+                                                "nodeType": "text"
+                                            }
+                                        ],
+                                        "nodeType": "paragraph"
+                                    },
+                                    {
+                                        "data": {},
+                                        "content": [
+                                            {
+                                                "data": {},
+                                                "marks": [],
+                                                "value": "Download the template to get started.",
+                                                "nodeType": "text"
+                                            }
+                                        ],
+                                        "nodeType": "paragraph"
+                                    }
+                                ],
+                                "nodeType": "document"
+                            }
+                        },
+                        "tool": {
+                            "en-US": {
+                                "sys": {
+                                    "space": {
+                                        "sys": {
+                                            "type": "Link",
+                                            "linkType": "Space",
+                                            "id": "rhffukznzwn4"
+                                        }
+                                    },
+                                    "type": "Asset",
+                                    "id": "uVJewFbfHemhAgYn54eq9",
+                                    "revision": 3,
+                                    "createdAt": "2019-08-22T21:33:16.682Z",
+                                    "updatedAt": "2019-08-29T01:27:37.291Z",
+                                    "environment": {
+                                        "sys": {
+                                            "id": "master",
+                                            "type": "Link",
+                                            "linkType": "Environment"
+                                        }
+                                    }
+                                },
+                                "fields": {
+                                    "title": {
+                                        "en-US": "BNZ Cash Flow Forecast Template"
+                                    },
+                                    "description": {
+                                        "en-US": "BNZ Cash Flow Forecast Template"
+                                    },
+                                    "file": {
+                                        "en-US": {
+                                            "url": "//assets.ctfassets.net/rhffukznzwn4/uVJewFbfHemhAgYn54eq9/082ac782cc4495b1ad0caf037e938a43/BNZ_Cash_Flow_Forecast_Template.pdf",
+                                            "details": {
+                                                "size": 761774
+                                            },
+                                            "fileName": "BNZ Cash Flow Forecast Template.pdf",
+                                            "contentType": "application/pdf"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "nodeType": "paragraph",
+            "content": [
+                {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                }
+            ],
+            "data": {}
+        },
+        {
+            "nodeType": "paragraph",
+            "content": [
+                {
+                    "nodeType": "text",
+                    "value": "Article with tools",
+                    "marks": [],
+                    "data": {}
+                }
+            ],
+            "data": {}
+        },
+        {
+            "nodeType": "embedded-asset-block",
+            "content": [],
+            "data": {
+                "target": {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "rhffukznzwn4"
+                            }
+                        },
+                        "type": "Asset",
+                        "id": "c27SABIp81rD6txB1QxxLDw",
+                        "revision": 0,
+                        "createdAt": "2019-08-28T02:40:38.732Z",
+                        "updatedAt": "2019-08-28T02:41:56.701Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        }
+                    },
+                    "fields": {
+                        "title": {
+                            "en-US": "Marketing Tile Icon"
+                        },
+                        "file": {
+                            "en-US": {
+                                "url": "//images.ctfassets.net/rhffukznzwn4/27SABIp81rD6txB1QxxLDw/6db9e4a6eee89dcd16b3ee14ed62507c/Marketing__1_.svg",
+                                "details": {
+                                    "size": 2547,
+                                    "image": {
+                                        "width": 83,
+                                        "height": 83
+                                    }
+                                },
+                                "fileName": "Marketing (1).svg",
+                                "contentType": "image/svg+xml"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "nodeType": "embedded-entry-block",
+            "content": [],
+            "data": {
+                "target": {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "rhffukznzwn4"
+                            }
+                        },
+                        "type": "Entry",
+                        "id": "PQCepHTAAVygjuu1m018f",
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "contentToolsTemplates"
+                            }
+                        },
+                        "revision": 3,
+                        "createdAt": "2019-06-17T23:02:39.713Z",
+                        "updatedAt": "2019-07-21T20:18:31.222Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        }
+                    },
+                    "fields": {
+                        "title": {
+                            "en-US": "Business plan health check"
+                        },
+                        "slug": {
+                            "en-US": "business-plan-health-check"
+                        },
+                        "topic": {
+                            "en-US": [
+                                "Growing existing"
+                            ]
+                        },
+                        "mediaThumb": {
+                            "en-US": {
+                                "sys": {
+                                    "space": {
+                                        "sys": {
+                                            "type": "Link",
+                                            "linkType": "Space",
+                                            "id": "rhffukznzwn4"
+                                        }
+                                    },
+                                    "type": "Asset",
+                                    "id": "c7Dke0l8KIeyMj4DqYKdKnV",
+                                    "revision": 2,
+                                    "createdAt": "2019-06-25T02:32:16.119Z",
+                                    "updatedAt": "2019-07-09T23:24:19.762Z",
+                                    "environment": {
+                                        "sys": {
+                                            "id": "master",
+                                            "type": "Link",
+                                            "linkType": "Environment"
+                                        }
+                                    }
+                                },
+                                "fields": {
+                                    "title": {
+                                        "en-US": "BNZ Business plan health check (PLACEHOLDER)"
+                                    },
+                                    "description": {
+                                        "en-US": "Health check"
+                                    },
+                                    "file": {
+                                        "en-US": {
+                                            "url": "//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg",
+                                            "details": {
+                                                "size": 5444,
+                                                "image": {
+                                                    "width": 69,
+                                                    "height": 64
+                                                }
+                                            },
+                                            "fileName": "businessplanhealthcheck.svg",
+                                            "contentType": "image/svg+xml"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "shortDescription": {
+                            "en-US": "The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business."
+                        },
+                        "body": {
+                            "en-US": {
+                                "data": {},
+                                "content": [
+                                    {
+                                        "data": {},
+                                        "content": [
+                                            {
+                                                "data": {},
+                                                "marks": [],
+                                                "value": "The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business.",
+                                                "nodeType": "text"
+                                            }
+                                        ],
+                                        "nodeType": "paragraph"
+                                    },
+                                    {
+                                        "data": {},
+                                        "content": [
+                                            {
+                                                "data": {},
+                                                "marks": [],
+                                                "value": "It won't take long to complete (as little as 10 minutes) and at the end of the process, we will prepare a downloadable list of recommended actions for you to take. You will also get plenty of information and templates to help you implement the recommended changes.",
+                                                "nodeType": "text"
+                                            }
+                                        ],
+                                        "nodeType": "paragraph"
+                                    },
+                                    {
+                                        "data": {
+                                            "target": {
+                                                "sys": {
+                                                    "space": {
+                                                        "sys": {
+                                                            "type": "Link",
+                                                            "linkType": "Space",
+                                                            "id": "rhffukznzwn4"
+                                                        }
+                                                    },
+                                                    "type": "Asset",
+                                                    "id": "c7Dke0l8KIeyMj4DqYKdKnV",
+                                                    "revision": 2,
+                                                    "createdAt": "2019-06-25T02:32:16.119Z",
+                                                    "updatedAt": "2019-07-09T23:24:19.762Z",
+                                                    "environment": {
+                                                        "sys": {
+                                                            "id": "master",
+                                                            "type": "Link",
+                                                            "linkType": "Environment"
+                                                        }
+                                                    }
+                                                },
+                                                "fields": {
+                                                    "title": {
+                                                        "en-US": "BNZ Business plan health check (PLACEHOLDER)"
+                                                    },
+                                                    "description": {
+                                                        "en-US": "Health check"
+                                                    },
+                                                    "file": {
+                                                        "en-US": {
+                                                            "url": "//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg",
+                                                            "details": {
+                                                                "size": 5444,
+                                                                "image": {
+                                                                    "width": 69,
+                                                                    "height": 64
+                                                                }
+                                                            },
+                                                            "fileName": "businessplanhealthcheck.svg",
+                                                            "contentType": "image/svg+xml"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "content": [],
+                                        "nodeType": "embedded-asset-block"
+                                    },
+                                    {
+                                        "data": {},
+                                        "content": [],
+                                        "nodeType": "hr"
+                                    },
+                                    {
+                                        "data": {},
+                                        "content": [
+                                            {
+                                                "data": {},
+                                                "marks": [],
+                                                "value": "",
+                                                "nodeType": "text"
+                                            }
+                                        ],
+                                        "nodeType": "paragraph"
+                                    }
+                                ],
+                                "nodeType": "document"
+                            }
+                        },
+                        "tool": {
+                            "en-US": {
+                                "sys": {
+                                    "space": {
+                                        "sys": {
+                                            "type": "Link",
+                                            "linkType": "Space",
+                                            "id": "rhffukznzwn4"
+                                        }
+                                    },
+                                    "type": "Asset",
+                                    "id": "c9cZMRfBKmfHwHLTB71IEu",
+                                    "revision": 2,
+                                    "createdAt": "2019-07-21T20:17:12.951Z",
+                                    "updatedAt": "2019-07-21T20:18:22.534Z",
+                                    "environment": {
+                                        "sys": {
+                                            "id": "master",
+                                            "type": "Link",
+                                            "linkType": "Environment"
+                                        }
+                                    }
+                                },
+                                "fields": {
+                                    "title": {
+                                        "en-US": "BNZ Health Check"
+                                    },
+                                    "file": {
+                                        "en-US": {
+                                            "url": "//assets.ctfassets.net/rhffukznzwn4/9cZMRfBKmfHwHLTB71IEu/5634b116eb3cbc5e3812c65f03789395/healthcheck.zip",
+                                            "details": {
+                                                "size": 712
+                                            },
+                                            "fileName": "healthcheck.zip",
+                                            "contentType": "application/zip"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "nodeType": "paragraph",
+            "content": [
+                {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                }
+            ],
+            "data": {}
+        },
+        {
+            "nodeType": "paragraph",
+            "content": [
+                {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                }
+            ],
+            "data": {}
+        },
+        {
+            "nodeType": "paragraph",
+            "content": [
+                {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                }
+            ],
+            "data": {}
+        }
+    ],
+    "id": "07cfa060-d4cf-52c6-9cd0-81d8980f7e4a",
+    "parent": "4abeae8c-42ab-5272-b5a6-70e23b0e692d",
+    "children": [],
+    "body": "{\"nodeType\":\"document\",\"data\":{},\"content\":[{\"nodeType\":\"embedded-entry-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Entry\",\"id\":\"c6EhSw9Xuod2FbaKiYNPv7a\",\"contentType\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"ContentType\",\"id\":\"contentToolsTemplates\"}},\"revision\":4,\"createdAt\":\"2019-08-22T21:44:40.392Z\",\"updatedAt\":\"2019-08-29T04:02:36.020Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Cash flow forecast template\"},\"slug\":{\"en-US\":\"cash-flow-forecast-template\"},\"category\":{\"en-US\":\"Guide\"},\"topic\":{\"en-US\":[\"Starting up new\",\"Growing existing\",\"Financial education\",\"Tools & Templates\"]},\"mediaThumb\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c3j1SKtA3Aut9O1DRdgzEw1\",\"revision\":1,\"createdAt\":\"2019-08-28T00:39:18.863Z\",\"updatedAt\":\"2019-08-28T00:39:38.949Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ template icon\"},\"description\":{\"en-US\":\"BNZ template icon\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/3j1SKtA3Aut9O1DRdgzEw1/c7ab66309470d6b2e880bc158d78e3a3/BNZ_template_icon.svg\",\"details\":{\"size\":5131,\"image\":{\"width\":61,\"height\":61}},\"fileName\":\"BNZ template icon.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"shortDescription\":{\"en-US\":\"Our cash flow forecast template can help you to forecast your cash flow on a month-to-month basis, or for the whole year. \"},\"body\":{\"en-US\":{\"data\":{},\"content\":[{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"This cash flow forecast template helps you to forecast cash flow on a month-to-month basis, or for the whole year. \",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"Download the template to get started.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"}],\"nodeType\":\"document\"}},\"tool\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"uVJewFbfHemhAgYn54eq9\",\"revision\":3,\"createdAt\":\"2019-08-22T21:33:16.682Z\",\"updatedAt\":\"2019-08-29T01:27:37.291Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Cash Flow Forecast Template\"},\"description\":{\"en-US\":\"BNZ Cash Flow Forecast Template\"},\"file\":{\"en-US\":{\"url\":\"//assets.ctfassets.net/rhffukznzwn4/uVJewFbfHemhAgYn54eq9/082ac782cc4495b1ad0caf037e938a43/BNZ_Cash_Flow_Forecast_Template.pdf\",\"details\":{\"size\":761774},\"fileName\":\"BNZ Cash Flow Forecast Template.pdf\",\"contentType\":\"application/pdf\"}}}}}}}}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"Article with tools\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"embedded-asset-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c27SABIp81rD6txB1QxxLDw\",\"revision\":0,\"createdAt\":\"2019-08-28T02:40:38.732Z\",\"updatedAt\":\"2019-08-28T02:41:56.701Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Marketing Tile Icon\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/27SABIp81rD6txB1QxxLDw/6db9e4a6eee89dcd16b3ee14ed62507c/Marketing__1_.svg\",\"details\":{\"size\":2547,\"image\":{\"width\":83,\"height\":83}},\"fileName\":\"Marketing (1).svg\",\"contentType\":\"image/svg+xml\"}}}}}},{\"nodeType\":\"embedded-entry-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Entry\",\"id\":\"PQCepHTAAVygjuu1m018f\",\"contentType\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"ContentType\",\"id\":\"contentToolsTemplates\"}},\"revision\":3,\"createdAt\":\"2019-06-17T23:02:39.713Z\",\"updatedAt\":\"2019-07-21T20:18:31.222Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Business plan health check\"},\"slug\":{\"en-US\":\"business-plan-health-check\"},\"topic\":{\"en-US\":[\"Growing existing\"]},\"mediaThumb\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c7Dke0l8KIeyMj4DqYKdKnV\",\"revision\":2,\"createdAt\":\"2019-06-25T02:32:16.119Z\",\"updatedAt\":\"2019-07-09T23:24:19.762Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Business plan health check (PLACEHOLDER)\"},\"description\":{\"en-US\":\"Health check\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg\",\"details\":{\"size\":5444,\"image\":{\"width\":69,\"height\":64}},\"fileName\":\"businessplanhealthcheck.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"shortDescription\":{\"en-US\":\"The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business.\"},\"body\":{\"en-US\":{\"data\":{},\"content\":[{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"It won't take long to complete (as little as 10 minutes) and at the end of the process, we will prepare a downloadable list of recommended actions for you to take. You will also get plenty of information and templates to help you implement the recommended changes.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c7Dke0l8KIeyMj4DqYKdKnV\",\"revision\":2,\"createdAt\":\"2019-06-25T02:32:16.119Z\",\"updatedAt\":\"2019-07-09T23:24:19.762Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Business plan health check (PLACEHOLDER)\"},\"description\":{\"en-US\":\"Health check\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg\",\"details\":{\"size\":5444,\"image\":{\"width\":69,\"height\":64}},\"fileName\":\"businessplanhealthcheck.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"content\":[],\"nodeType\":\"embedded-asset-block\"},{\"data\":{},\"content\":[],\"nodeType\":\"hr\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"}],\"nodeType\":\"document\"}},\"tool\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c9cZMRfBKmfHwHLTB71IEu\",\"revision\":2,\"createdAt\":\"2019-07-21T20:17:12.951Z\",\"updatedAt\":\"2019-07-21T20:18:22.534Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Health Check\"},\"file\":{\"en-US\":{\"url\":\"//assets.ctfassets.net/rhffukznzwn4/9cZMRfBKmfHwHLTB71IEu/5634b116eb3cbc5e3812c65f03789395/healthcheck.zip\",\"details\":{\"size\":712},\"fileName\":\"healthcheck.zip\",\"contentType\":\"application/zip\"}}}}}}}}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}}]}",
+    "internal": {
+        "type": "contentfulContentLongReadBodyRichTextNode",
+        "mediaType": "text/richtext",
+        "content": "{\"nodeType\":\"document\",\"data\":{},\"content\":[{\"nodeType\":\"embedded-entry-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Entry\",\"id\":\"c6EhSw9Xuod2FbaKiYNPv7a\",\"contentType\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"ContentType\",\"id\":\"contentToolsTemplates\"}},\"revision\":4,\"createdAt\":\"2019-08-22T21:44:40.392Z\",\"updatedAt\":\"2019-08-29T04:02:36.020Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Cash flow forecast template\"},\"slug\":{\"en-US\":\"cash-flow-forecast-template\"},\"category\":{\"en-US\":\"Guide\"},\"topic\":{\"en-US\":[\"Starting up new\",\"Growing existing\",\"Financial education\",\"Tools & Templates\"]},\"mediaThumb\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c3j1SKtA3Aut9O1DRdgzEw1\",\"revision\":1,\"createdAt\":\"2019-08-28T00:39:18.863Z\",\"updatedAt\":\"2019-08-28T00:39:38.949Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ template icon\"},\"description\":{\"en-US\":\"BNZ template icon\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/3j1SKtA3Aut9O1DRdgzEw1/c7ab66309470d6b2e880bc158d78e3a3/BNZ_template_icon.svg\",\"details\":{\"size\":5131,\"image\":{\"width\":61,\"height\":61}},\"fileName\":\"BNZ template icon.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"shortDescription\":{\"en-US\":\"Our cash flow forecast template can help you to forecast your cash flow on a month-to-month basis, or for the whole year. \"},\"body\":{\"en-US\":{\"data\":{},\"content\":[{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"This cash flow forecast template helps you to forecast cash flow on a month-to-month basis, or for the whole year. \",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"Download the template to get started.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"}],\"nodeType\":\"document\"}},\"tool\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"uVJewFbfHemhAgYn54eq9\",\"revision\":3,\"createdAt\":\"2019-08-22T21:33:16.682Z\",\"updatedAt\":\"2019-08-29T01:27:37.291Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Cash Flow Forecast Template\"},\"description\":{\"en-US\":\"BNZ Cash Flow Forecast Template\"},\"file\":{\"en-US\":{\"url\":\"//assets.ctfassets.net/rhffukznzwn4/uVJewFbfHemhAgYn54eq9/082ac782cc4495b1ad0caf037e938a43/BNZ_Cash_Flow_Forecast_Template.pdf\",\"details\":{\"size\":761774},\"fileName\":\"BNZ Cash Flow Forecast Template.pdf\",\"contentType\":\"application/pdf\"}}}}}}}}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"Article with tools\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"embedded-asset-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c27SABIp81rD6txB1QxxLDw\",\"revision\":0,\"createdAt\":\"2019-08-28T02:40:38.732Z\",\"updatedAt\":\"2019-08-28T02:41:56.701Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Marketing Tile Icon\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/27SABIp81rD6txB1QxxLDw/6db9e4a6eee89dcd16b3ee14ed62507c/Marketing__1_.svg\",\"details\":{\"size\":2547,\"image\":{\"width\":83,\"height\":83}},\"fileName\":\"Marketing (1).svg\",\"contentType\":\"image/svg+xml\"}}}}}},{\"nodeType\":\"embedded-entry-block\",\"content\":[],\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Entry\",\"id\":\"PQCepHTAAVygjuu1m018f\",\"contentType\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"ContentType\",\"id\":\"contentToolsTemplates\"}},\"revision\":3,\"createdAt\":\"2019-06-17T23:02:39.713Z\",\"updatedAt\":\"2019-07-21T20:18:31.222Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"Business plan health check\"},\"slug\":{\"en-US\":\"business-plan-health-check\"},\"topic\":{\"en-US\":[\"Growing existing\"]},\"mediaThumb\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c7Dke0l8KIeyMj4DqYKdKnV\",\"revision\":2,\"createdAt\":\"2019-06-25T02:32:16.119Z\",\"updatedAt\":\"2019-07-09T23:24:19.762Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Business plan health check (PLACEHOLDER)\"},\"description\":{\"en-US\":\"Health check\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg\",\"details\":{\"size\":5444,\"image\":{\"width\":69,\"height\":64}},\"fileName\":\"businessplanhealthcheck.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"shortDescription\":{\"en-US\":\"The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business.\"},\"body\":{\"en-US\":{\"data\":{},\"content\":[{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"The business plan diagnostic is an easy-to-use tool designed to assess how well developed your business plan is to help you succeed in your new business.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"It won't take long to complete (as little as 10 minutes) and at the end of the process, we will prepare a downloadable list of recommended actions for you to take. You will also get plenty of information and templates to help you implement the recommended changes.\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"},{\"data\":{\"target\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c7Dke0l8KIeyMj4DqYKdKnV\",\"revision\":2,\"createdAt\":\"2019-06-25T02:32:16.119Z\",\"updatedAt\":\"2019-07-09T23:24:19.762Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Business plan health check (PLACEHOLDER)\"},\"description\":{\"en-US\":\"Health check\"},\"file\":{\"en-US\":{\"url\":\"//images.ctfassets.net/rhffukznzwn4/7Dke0l8KIeyMj4DqYKdKnV/5f8b356927b2940719ca0dedaa3dcbf7/businessplanhealthcheck.svg\",\"details\":{\"size\":5444,\"image\":{\"width\":69,\"height\":64}},\"fileName\":\"businessplanhealthcheck.svg\",\"contentType\":\"image/svg+xml\"}}}}},\"content\":[],\"nodeType\":\"embedded-asset-block\"},{\"data\":{},\"content\":[],\"nodeType\":\"hr\"},{\"data\":{},\"content\":[{\"data\":{},\"marks\":[],\"value\":\"\",\"nodeType\":\"text\"}],\"nodeType\":\"paragraph\"}],\"nodeType\":\"document\"}},\"tool\":{\"en-US\":{\"sys\":{\"space\":{\"sys\":{\"type\":\"Link\",\"linkType\":\"Space\",\"id\":\"rhffukznzwn4\"}},\"type\":\"Asset\",\"id\":\"c9cZMRfBKmfHwHLTB71IEu\",\"revision\":2,\"createdAt\":\"2019-07-21T20:17:12.951Z\",\"updatedAt\":\"2019-07-21T20:18:22.534Z\",\"environment\":{\"sys\":{\"id\":\"master\",\"type\":\"Link\",\"linkType\":\"Environment\"}}},\"fields\":{\"title\":{\"en-US\":\"BNZ Health Check\"},\"file\":{\"en-US\":{\"url\":\"//assets.ctfassets.net/rhffukznzwn4/9cZMRfBKmfHwHLTB71IEu/5634b116eb3cbc5e3812c65f03789395/healthcheck.zip\",\"details\":{\"size\":712},\"fileName\":\"healthcheck.zip\",\"contentType\":\"application/zip\"}}}}}}}}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}},{\"nodeType\":\"paragraph\",\"content\":[{\"nodeType\":\"text\",\"value\":\"\",\"marks\":[],\"data\":{}}],\"data\":{}}]}",
+        "contentDigest": "a08d37fa2da771076561e964a6f367a2",
+        "owner": "gatsby-source-contentful"
+    }
+}

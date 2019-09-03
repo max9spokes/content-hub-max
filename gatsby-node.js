@@ -1,6 +1,7 @@
 const path = require("path")
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const fs = require("fs")
+const has = require("lodash.has")
 var extract = require("extract-zip")
 exports.createPages = async ({ actions, graphql }) => {
   const {
@@ -97,50 +98,14 @@ exports.onCreateNode = async ({
       createNodeId,
     }))
   if (node.internal.type === "File" && node.extension === "zip") {
-    // console.log(node)
     const parent = getNode(node.parent)
     const { name, absolutePath } = node
-    const destination = path.resolve(
-      `./public/iframes/${parent.internal.contentDigest}`
-    )
+    const destination = path.resolve(`./public/iframes/${parent.contentful_id}`)
 
-    extract(absolutePath, { dir: destination }, function(err) {
-      // console.log(err)
-    })
+    extract(absolutePath, { dir: destination }, function(err) {})
   }
 }
 
-// exports.sourceNodes = ({ actions, schema }) => {
-//   const { createTypes } = actions
-//   const typeDefs = [
-//     "type ContentfulAsset implements Node { localFolder: LocalFolder }",
-//     schema.buildObjectType({
-//       name: "LocalFolder",
-//       fields: {
-//         path: {
-//           type: "String",
-//           resolve: (source, args, context, info) => {
-//             // If we were linking by ID, we could use `getNodeById` to
-//             // find the correct author:
-//             // return context.nodeModel.getNodeById({
-//             //   id: source.author,
-//             //   type: "AuthorJson",
-//             // })
-//             // But since we are using the author email as foreign key,
-//             // we can use `runQuery`, or simply get all author nodes
-//             // with `getAllNodes` and manually find the linked author
-//             // node:
-//             return context.nodeModel.getNodeById({
-//               id: source.children[0].id,
-//               type: "File",
-//             })
-//           },
-//         },
-//       },
-//     }),
-//   ]
-//   createTypes(typeDefs)
-// }
 exports.createResolvers = ({
   actions,
   cache,
@@ -150,16 +115,42 @@ exports.createResolvers = ({
   reporter,
 }) => {
   createResolvers({
+    ContentfulContentLongRead: {
+      embededTools: {
+        type: ["ContentfulContentToolsTemplates"],
+        resolve(source, args, context, info) {
+          const bodyNode = context.nodeModel.getNodeById({
+            id: source["body___NODE"],
+          })
+          const tools = context.nodeModel.getAllNodes({
+            type: `ContentfulContentToolsTemplates`,
+          })
+
+          return bodyNode.content
+            .filter(i => i.nodeType === "embedded-entry-block")
+            .map(tool => {
+              var toolId = tool.data.target.sys.id
+
+              const t = tools
+                ? tools.filter(a => {
+                    return toolId.includes(a.contentful_id)
+                  })
+                : null
+              return t && t.length >= 1 ? t[0] : null
+            })
+            .filter(i => i !== null)
+        },
+      },
+    },
     ContentfulAsset: {
       localZipFolder: {
         type: `String`,
         resolve(source, args, context, info) {
           if (source.file && source.file.contentType == "application/zip") {
             let indexFile = null
+
             var files = fs.readdirSync(
-              path.resolve(
-                `./public/iframes/${source.internal.contentDigest}`
-              )
+              path.resolve(`./public/iframes/${source.contentful_id}`)
             )
             files.forEach(file => {
               if (/.*\.html$/.test(file)) {
@@ -167,7 +158,7 @@ exports.createResolvers = ({
               }
             })
 
-            return `/content/iframes/${source.internal.contentDigest}${
+            return `/content/iframes/${source.contentful_id}${
               indexFile ? "/" + indexFile : ""
             }`
           } else {
@@ -180,10 +171,9 @@ exports.createResolvers = ({
         resolve(source, args, context, info) {
           if (source.file && source.file.contentType == "application/zip") {
             let indexFile = null
+
             var files = fs.readdirSync(
-              path.resolve(
-                `./public/iframes/${source.internal.contentDigest}`
-              )
+              path.resolve(`./public/iframes/${source.contentful_id}`)
             )
             files.forEach(file => {
               if (/.*\.html$/.test(file)) {
@@ -194,9 +184,7 @@ exports.createResolvers = ({
             if (indexFile) {
               var data = fs.readFileSync(
                 path.resolve(
-                  `./public/iframes/${
-                    source.internal.contentDigest
-                  }/${indexFile}`
+                  `./public/iframes/${source.contentful_id}/${indexFile}`
                 ),
                 { encoding: "utf-8" }
               )

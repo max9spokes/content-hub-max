@@ -22,6 +22,36 @@ export const query = graphql`
     article: contentfulContentLongRead(slug: { eq: $slug }) {
       title
       category
+      embededTools {
+        contentful_id
+
+        mediaThumb {
+          description
+          fluid {
+            base64
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+          file {
+            url
+            contentType
+          }
+        }
+        tool {
+          localZipFolder
+          localZipHtmlSrc
+
+          file {
+            url
+            fileName
+            contentType
+          }
+        }
+      }
       mediaThumb {
         description
         fluid(maxWidth: 1500, cropFocus: LEFT) {

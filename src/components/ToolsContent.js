@@ -4,11 +4,12 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { SingleImage } from "./SingleImage"
 import ReactIframeResizer from "react-iframe-resizer-super"
+
+import ShouldIframeUpdate from "./ShouldIframeUpdate"
 import css from "@emotion/css"
 import useScrollDirection from "./useScrollDirection"
 
 import GatsbyImage from "gatsby-image"
-import ShouldIframeUpdate from "./ShouldIframeUpdate"
 export default function SingleContent({ data: { tool } }) {
   const iframeRef = useRef(null)
   const [direction] = useScrollDirection()

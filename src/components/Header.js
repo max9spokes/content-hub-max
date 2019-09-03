@@ -155,7 +155,7 @@ export default function Header() {
       >
         <div className="container">
           <div className="d-flex d-flex align-items-center justify-content-between">
-            <Link
+            <a
               css={css`
                 display: flex;
                 align-items: center;
@@ -185,7 +185,7 @@ export default function Header() {
               >
                 {channelProductMarketName}
               </span>
-            </Link>
+            </a>
             <div className="navlinks d-none d-md-flex align-items-center">
               {navigation.slice(0, navigation.length - 2).map((link, i) => {
                 return <Navlink key={link.url} link={link} />
