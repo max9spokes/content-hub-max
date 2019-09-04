@@ -157,7 +157,6 @@ export default function ArticlesListing() {
             }
             className="mb-3 clearfix"
           >
-            {console.log(has(article, "mediaThumb.fluid.src"), article)}
             {article.mediaThumb.fluid.src ? (
               <GatsbyImage
                 imgStyle={{ transition: null }}
