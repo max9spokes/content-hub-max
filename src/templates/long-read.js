@@ -22,6 +22,7 @@ export const query = graphql`
     article: contentfulContentLongRead(slug: { eq: $slug }) {
       title
       category
+      expanderH2
       embededTools {
         contentful_id
 

@@ -24,10 +24,13 @@ export default function Footer() {
             legalText
           }
           termsLink {
-            title
-            url
-            openNewTab
-            style
+            ... on ContentfulRefNavigationElement {
+              id
+              title
+              url
+              style
+              openNewTab
+            }
           }
         }
       }

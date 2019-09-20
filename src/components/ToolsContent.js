@@ -61,13 +61,13 @@ export default function SingleContent({ data: { tool } }) {
                 )}
 
               <div
-                css={css`
-                  font-size: 14px;
-                  font-weight: 600;
-                  line-height: 17px;
-                  text-align: center;
-                  margin: 1.25rem 0;
-                `}
+                css={[
+                  contentStyle,
+                  css`
+                    text-align: center;
+                    margin: 1.25rem 0;
+                  `,
+                ]}
               >
                 {documentToReactComponents(tool.body.json)}
               </div>
@@ -145,3 +145,68 @@ function resizeIframe(obj) {
   } = obj
   return scrollHeight + "px"
 }
+
+const contentStyle = css`
+  font-size: 14px;
+  line-height: 1.36;
+  p {
+    margin-bottom: 14px;
+  }
+  /* @md */
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.38;
+    p {
+      margin-bottom: 16px;
+    }
+  }
+
+  h1 {
+    font-size: 35px;
+    letter-spacing: normal;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: 28px;
+    letter-spacing: normal;
+    font-weight: semibold;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 24px;
+    letter-spacing: normal;
+    font-weight: semibold;
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 20px;
+    letter-spacing: normal;
+    font-weight: regular;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  ul {
+    font-size: 16px;
+    letter-spacing: normal;
+    font-weight: regular;
+    line-height: 1.38;
+    margin-bottom: 16px;
+    list-style-type: disc;
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+
+  ol {
+    font-size: 16px;
+    letter-spacing: normal;
+    font-weight: regular;
+    line-height: 1.38;
+    margin-bottom: 16px;
+    list-style-type: lower-alpha;
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+`
