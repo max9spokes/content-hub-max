@@ -69,7 +69,7 @@ export default function SingleContent({ data: { tool } }) {
                   `,
                 ]}
               >
-                {documentToReactComponents(tool.body.json)}
+                {tool && tool.body && documentToReactComponents(tool.body.json)}
               </div>
             </div>
           </div>
