@@ -163,6 +163,13 @@ export default function SingleContent({ data: { article } }) {
                       line-height: 1.45;
                       margin-bottom: 12px;
                     }
+                    h6 {
+                      font-size: 14px;
+                      letter-spacing: normal;
+                      font-weight: regular;
+                      line-height: 1.38;
+                      margin-bottom: 14px;
+                    }
 
                     ul {
                       font-size: 16px;
