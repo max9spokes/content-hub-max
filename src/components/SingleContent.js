@@ -155,7 +155,7 @@ export default function SingleContent({ data: { article } }) {
                       letter-spacing: normal;
                       font-weight: semibold;
                       line-height: 1.3;
-                      margin-bottom: 1.5;
+                      margin-bottom: 1.5rem;
                     }
                     h4 {
                       font-size: 20px;
