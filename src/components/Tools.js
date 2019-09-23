@@ -167,7 +167,7 @@ export default function Tools() {
                   >
                     <h3
                       css={css`
-                        font-size: 17px;
+                        font-size: 18px;
                         font-weight: 600;
                         line-height: 20px;
                         color: var(--primary);
@@ -199,8 +199,8 @@ export default function Tools() {
                       <div
                         className="col col-9 text-secondary"
                         css={css`
-                          font-size: 12px;
-                          line-height: 15px;
+                          font-size: 14px;
+                          line-height: 1.36rem;
                         `}
                       >
                         {tool.shortDescription.shortDescription}
