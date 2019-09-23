@@ -44,21 +44,6 @@ export default function SingleContent({ data: { tool } }) {
               >
                 {tool.title}
               </h2>
-              {tool.mediaThumb &&
-                tool.mediaThumb.file.contentType !== "image/svg+xml" && (
-                  <GatsbyImage
-                    alt={tool.mediaThumb.description}
-                    fluid={tool.mediaThumb.fluid}
-                  />
-                )}
-              {tool.mediaThumb &&
-                tool.mediaThumb.file.contentType == "image/svg+xml" && (
-                  <img
-                    className="my-4 mx-auto d-block"
-                    alt={tool.mediaThumb.description}
-                    src={tool.mediaThumb.file.url}
-                  />
-                )}
 
               <div
                 css={[
