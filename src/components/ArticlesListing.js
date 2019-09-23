@@ -221,9 +221,9 @@ export default function ArticlesListing() {
             </div>
             <h3
               css={css`
-                font-size: 24px;
-                font-weight: semibold;
-                line-height: 1.3rem;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 1.4rem;
                 margin-top: 0.5rem;
                 text-transform: uppercase;
                 color: var(--secondary);
