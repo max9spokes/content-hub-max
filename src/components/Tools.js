@@ -201,6 +201,7 @@ export default function Tools() {
                         css={css`
                           font-size: 14px;
                           line-height: 1.36rem;
+                          padding-left: 0;
                         `}
                       >
                         {tool.shortDescription.shortDescription}
