@@ -94,15 +94,17 @@ export default function FeaturedArticle() {
           css={css`
             color: var(--dark-font);
             margin-top: 1.25rem;
+            font-size: 28px;
             font-weight: bold;
+            text-transform: uppercase;
           `}
         >
           {article.title}
         </h2>
         <p
           css={css`
-            font-size: 12px;
-            line-height: 1.25;
+            font-size: 16px;
+            line-height: 1.38rem;
             color: var(--dark-font);
 
             padding-right: 1rem;
@@ -115,7 +117,7 @@ export default function FeaturedArticle() {
         <span
           to={article.slug}
           css={css`
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--dark-font);
             display: inline-block;
