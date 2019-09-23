@@ -211,7 +211,7 @@ export default function ArticlesListing() {
             <div
               css={css`
                 color: var(--dark-font);
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: 600;
                 line-height: 15px;
                 text-transform: uppercase;
@@ -221,9 +221,9 @@ export default function ArticlesListing() {
             </div>
             <h3
               css={css`
-                font-size: 18px;
-                font-weight: bold;
-                line-height: 23px;
+                font-size: 24px;
+                font-weight: semibold;
+                line-height: 1.3rem;
                 margin-top: 0.5rem;
                 text-transform: uppercase;
                 color: var(--secondary);
@@ -233,8 +233,8 @@ export default function ArticlesListing() {
             </h3>
             <p
               css={css`
-                font-size: 12px;
-                line-height: 15px;
+                font-size: 16px;
+                line-height: 1.38rem;
 
                 margin-top: 0.5rem;
                 color: var(--secondary);
