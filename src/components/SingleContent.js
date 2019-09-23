@@ -99,7 +99,7 @@ export default function SingleContent({ data: { article } }) {
                     color: #002e6b;
                     text-align: center;
                     text-transform: uppercase;
-                    font-size: 12px;
+                    font-size: 14px;
                     font-weight: 600;
                     line-height: 15px;
                   `}
@@ -123,10 +123,10 @@ export default function SingleContent({ data: { article } }) {
                   id="content"
                   className={"pb-4"}
                   css={css`
-                    font-size: 14px;
-                    line-height: 1.36;
+                    font-size: 16px;
+                    line-height: 1.38;
                     p {
-                      margin-bottom: 14px;
+                      margin-bottom: 16px;
                     }
                     /* @md */
                     @media (min-width: 768px) {
@@ -164,6 +164,13 @@ export default function SingleContent({ data: { article } }) {
                       line-height: 1.45;
                       margin-bottom: 12px;
                     }
+                    h5 {
+                      font-size: 16px;
+                      letter-spacing: normal;
+                      font-weight: regular;
+                      line-height: 1.45;
+                      margin-bottom: 16px;
+                    }
                     h6 {
                       font-size: 14px;
                       letter-spacing: normal;
@@ -192,6 +199,11 @@ export default function SingleContent({ data: { article } }) {
                       list-style-type: lower-alpha;
                       padding-left: 20px;
                       padding-right: 10px;
+                    }
+
+                    hr{
+                      margin-top: 2.5rem;
+                      margin-bottom: 1.5rem;
                     }
                   `}
                 >
