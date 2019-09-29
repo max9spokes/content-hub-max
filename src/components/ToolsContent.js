@@ -38,7 +38,7 @@ export default function SingleContent({ data: { tool } }) {
                   font-size: 32px;
                   font-weight: bold;
                   line-height: 32px;
-                  text-align: center;
+                  text-align: left;
                   color: var(--dark-font);
                 `}
               >
@@ -49,7 +49,7 @@ export default function SingleContent({ data: { tool } }) {
                 css={[
                   contentStyle,
                   css`
-                    text-align: center;
+                    text-align: left;
                     margin: 1.25rem 0;
                   `,
                 ]}
