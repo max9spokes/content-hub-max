@@ -86,7 +86,7 @@ export default function SingleContent({ data: { article } }) {
                     font-size: 32px;
                     font-weight: bold;
                     line-height: 32px;
-                    text-align: center;
+                    text-align: left;
                     color: var(--dark-font);
                     max-width: 80%;
                     margin: 2rem auto 1rem auto;
