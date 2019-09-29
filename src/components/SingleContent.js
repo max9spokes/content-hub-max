@@ -88,7 +88,6 @@ export default function SingleContent({ data: { article } }) {
                     line-height: 32px;
                     text-align: left;
                     color: var(--dark-font);
-                    max-width: 80%;
                     margin: 2rem auto 1rem auto;
                   `}
                 >
