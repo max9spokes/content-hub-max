@@ -74,7 +74,7 @@ function Share() {
             height="30"
             id="facebook"
             style={{ fill: "#3b5998" }}
-            viewBox="0 0 90 90"
+            viewBox="2 2 85 85"
             onClick={() => {
               typeof window !== "undefined" &&
                 window.open(
