@@ -96,7 +96,7 @@ export default function SingleContent({ data: { article } }) {
                 <div
                   css={css`
                     color: #002e6b;
-                    text-align: center;
+                    text-align: left;
                     text-transform: uppercase;
                     font-size: 14px;
                     font-weight: 600;
