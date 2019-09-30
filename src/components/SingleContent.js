@@ -81,6 +81,18 @@ export default function SingleContent({ data: { article } }) {
               <div
                 className={`col col-12 ${article.mediaThumb ? "col-md-6" : 0}`}
               >
+               <div
+                  css={css`
+                    color: #002e6b;
+                    text-align: left;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 15px;
+                  `}
+                >
+                  {article.category}
+                </div>
                 <h1
                   css={css`
                     font-size: 32px;
@@ -93,18 +105,7 @@ export default function SingleContent({ data: { article } }) {
                 >
                   {article.title}
                 </h1>
-                <div
-                  css={css`
-                    color: #002e6b;
-                    text-align: left;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 15px;
-                  `}
-                >
-                  {article.category}
-                </div>
+                
                 <p
                   className="excerpt"
                   css={css`
