@@ -14,7 +14,7 @@ function Index({ data }) {
           description: data.article.shortDescription.shortDescription
             .split("\n")[0]
             .toString(),
-          image: data.article.mediaThumb.file.url,
+          image: data.article.mediaThumb.fluid.src,
           url:
             typeof window !== "undefined"
               ? window.origin + window.location.pathname
