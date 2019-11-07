@@ -19,6 +19,7 @@ const Navlink = ({ link }) => {
           to={link.url}
           css={[
             css`
+              font-weight: ${link.url == "/" ? "700" : "400"};
               color: ${link.style !== "Primary-CTA"
                 ? "var(--dark-font)"
                 : null};
@@ -43,6 +44,7 @@ const Navlink = ({ link }) => {
           href={link.url}
           css={[
             css`
+              font-weight: ${link.url == "/" ? "700" : "400"};
               color: ${link.style !== "Primary-CTA"
                 ? "var(--dark-font)"
                 : null};
@@ -68,6 +70,7 @@ const Navlink = ({ link }) => {
           href={link.url}
           css={[
             css`
+              font-weight: ${link.url == "/" ? "700" : "400"};
               color: ${link.style !== "Primary-CTA"
                 ? "var(--dark-font)"
                 : null};

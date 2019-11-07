@@ -106,7 +106,7 @@ export default function SingleContent({ data: { article } }) {
                   `}
                 >
                   {article.title}
-                </h1>                
+                </h1>
                 <p
                   className="excerpt"
                   css={css`
@@ -202,7 +202,7 @@ export default function SingleContent({ data: { article } }) {
                       padding-right: 10px;
                     }
 
-                    hr{
+                    hr {
                       margin-top: 2.5rem;
                       margin-bottom: 1.5rem;
                     }
