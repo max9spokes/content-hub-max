@@ -4,7 +4,6 @@ import SingleContent from "../components/SingleContent"
 import Tools from "../components/Tools"
 import { graphql } from "gatsby"
 import Seo from "../components/Seo"
-import { type } from "os"
 function Index({ data }) {
   return (
     <Layout>

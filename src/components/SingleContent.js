@@ -75,7 +75,17 @@ export default function SingleContent({ data: { article } }) {
             <div className="row  ">
               {article.mediaThumb && (
                 <div className="col col-12 col-md-6">
-                  <SingleImage mediaThumb={article.mediaThumb} />
+                  <SingleImage
+                    mediaThumb={article.mediaThumb}
+                    socialShares={{
+                      text: article.title,
+                      title: article.title,
+                      summary: article.shortDescription.shortDescription.split(
+                        "\n"
+                      )[0],
+                      via: "BNZ",
+                    }}
+                  />
                 </div>
               )}
               <div

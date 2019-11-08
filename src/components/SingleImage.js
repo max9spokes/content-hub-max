@@ -29,12 +29,12 @@ export default function SingleImage(props) {
         alt={props.mediaThumb.description}
         fluid={props.mediaThumb.fluid}
       />
-      <Share />
+      <Share data={props.socialShares} />
     </div>
   )
 }
 
-function Share() {
+function Share({ data }) {
   const [open, setOpen] = useState(false)
   return (
     <div
@@ -78,11 +78,9 @@ function Share() {
             onClick={() => {
               typeof window !== "undefined" &&
                 window.open(
-                  `https://www.facebook.com/sharer/sharer.php${objectToGetParams(
-                    {
-                      u: window.location.href,
-                    }
-                  )}`,
+                  `https://www.facebook.com/sharer.php${objectToGetParams({
+                    u: window.location.href,
+                  })}`,
                   "share"
                 )
             }}
@@ -102,7 +100,12 @@ function Share() {
               typeof window !== "undefined" &&
                 window.open(
                   `https://linkedin.com/shareArticle${objectToGetParams({
+                    mini: "true",
                     url: window.location.href,
+                    ...{
+                      title: data.title,
+                      summary: data.summary,
+                    },
                   })}`,
                   "share"
                 )
@@ -131,6 +134,10 @@ function Share() {
                 window.open(
                   `https://twitter.com/share${objectToGetParams({
                     url: window.location.href,
+                    ...{
+                      text: data.text,
+                      via: data.via,
+                    },
                   })}`,
                   "share"
                 )
