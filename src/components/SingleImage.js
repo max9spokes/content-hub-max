@@ -81,7 +81,8 @@ function Share({ data }) {
                   `https://www.facebook.com/sharer.php${objectToGetParams({
                     u: window.location.href,
                   })}`,
-                  "share"
+                  "_blank",
+                  "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600"
                 )
             }}
           >
@@ -107,7 +108,8 @@ function Share({ data }) {
                       summary: data.summary,
                     },
                   })}`,
-                  "share"
+                  "_blank",
+                  "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600"
                 )
             }}
             style={{ fill: "#0077B5" }}
@@ -139,7 +141,8 @@ function Share({ data }) {
                       via: data.via,
                     },
                   })}`,
-                  "share"
+                  "_blank",
+                  "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600"
                 )
             }}
             style={{ fill: "#38A1F3" }}
