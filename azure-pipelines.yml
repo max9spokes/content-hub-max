@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  #vmImage: 'ubuntu-latest'
+  name: 'Private-Ubuntu-1604'
+
+
+
+steps:
+
+
+  
+- bash: |
+      npm install
+  displayName: 'Install package dependencies'
+
+- bash: |
+    #../.env
+    CONTENTFUL_SPACE_ID=$(contentfulSpaceID) \
+    CONTENTFUL_ACCESS_TOKEN=$(contentfulAccessToken) \
+    CONTENTFUL_PREVIEW_TOKEN=$(contentfulPreviewToken) \
+    CONTENTFUL_HOST=$(contentfulHost) \
+    PUBLISH=$(PublishBool) \
+    node_modules/.bin/gatsby build --prefix-paths
+  displayName: 'Build Gatsby Artifacts'
+
+- bash : |
+    test -d public || mkdir public
+    tar -zcvf bnzcontent$(PublishBool).tar.gz public 
+  displayName: 'Create bnzcontent$(PublishBool) archive'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'bnzcontent$(PublishBool).tar.gz'
+    ArtifactName: 'bnzcontent$(PublishBool)'
+    publishLocation: 'Container'
