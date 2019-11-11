@@ -27,10 +27,9 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_PREVIEW,
-        // downloadLocal: true,
-        host: `preview.contentful.com`,
+       spaceId: process.env.CONTENTFUL_SPACE_ID,
+       accessToken: process.env.PUBLISH === 'Publish' ? process.env.CONTENTFUL_ACCESS_TOKEN : process.env.CONTENTFUL_PREVIEW_TOKEN,
+       host: process.env.PUBLISH === 'Publish' ? 'cdn.contentful.com' : `preview.contentful.com`,
       },
     },
     // {
@@ -41,14 +40,7 @@ module.exports = {
     //   },
     // },
     `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "GTM-MWZ5QNT",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-      },
-    },
+
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
@@ -59,9 +51,9 @@ module.exports = {
         includeInDevelopment: false,
 
         // Specify optional GTM environment details.
-        gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
-        gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
-        dataLayerName: "YOUR_DATA_LAYER_NAME",
+      //  gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+      //  gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+      //  dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
   ],
